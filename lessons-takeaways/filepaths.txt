@@ -1,0 +1,38 @@
+/*
+
+first off:
+anytime there's just a slash: absolute path
+anytime there's a dot: relative path
+
+keep that in mind.  moving on:
+
+anytime you're linking to another file by using a filepath and you need to format..
+ask yourself these questions:
+does it matter where this file lives?
+or does it matter where this file is being run from?
+
+let's explore the question of 'where is this file run from' a bit more:
+you'll ask yourself: in which directory/folder did you have your terminal (essentially) when you hit your run command?
+that's the reference that that file will start from when you write your path
+
+THIS IS TRICKY BECAUSE:
+--let's say you have a node command where you run something like nodemon server/server.js
+--but let's say you later on decided to cd to server, then run nodemon server.js
+--the "where it's run from" question now has a different answer! 
+--and you'd have to update all your file paths (in your server.js file) if they were relative 
+
+but again that's IF it's relative.  if it's absolute, that doesn't matter.
+So.
+You likely want to use absolute paths where you can.  
+Ie the 'path.join(__dirname, '../public')' type stuff.
+This should be helpful for deployment.
+
+As a refresher:
+'/public' - this is absolute, look at the root of your whole computer (the /) and look for public. 
+'./public' - this is relative, look for public in the same directory
+'../public' - this is relative, go up a directory and look for public
+'path.join(__dirname, '../public')' - find where the current file is located, then go up a directory, then look for public
+
+using the __dirname is "safe" ie it doesn't matter "where it's run from"
+
+*/
