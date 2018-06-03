@@ -1,10 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const bundlePath = path.resolve(__dirname, 'dist/');
+const bundlePath = path.resolve(__dirname, 'client/dist/');
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: './client/src/index.jsx',
   module: {
     rules: [
       {
@@ -21,7 +21,7 @@ module.exports = {
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
-    publicPath: bundlePath,
+    path: bundlePath,
     filename: 'bundle.js',
-  },
+  }
 };

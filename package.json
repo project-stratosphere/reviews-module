@@ -8,8 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build": "webpack --mode development",
-    "start": "nodemon --verbose server/server.js"
+    "build": "webpack --config webpack.config.js --mode development --watch",
+    "start": "nodemon server/server.js"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
