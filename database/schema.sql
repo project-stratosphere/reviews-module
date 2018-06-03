@@ -1,5 +1,8 @@
 -- //https://dev.mysql.com/doc/refman/5.7/en/
 
+-- for reference: a command to load data into database:
+-- load data local infile '/Users/...[PATH].../database/data/userdata.txt' into table user
+
 DROP DATABASE IF EXISTS airbnc_data;
 
 CREATE DATABASE airbnc_data;
@@ -12,8 +15,8 @@ CREATE TABLE user (
   last_name TINYTEXT NOT NULL
 );
 
-INSERT INTO user VALUES (NULL, 'Joe', 'Schmo');
-INSERT INTO user VALUES (NULL, 'Big', 'Papa');
+-- INSERT INTO user VALUES (NULL, 'Joe', 'Schmo');
+-- INSERT INTO user VALUES (NULL, 'Big', 'Papa');
 
 CREATE TABLE review (
   review_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -31,9 +34,9 @@ CREATE TABLE review (
 
 ALTER TABLE review ADD FOREIGN KEY (user_id) REFERENCES user (user_id);
 
-INSERT INTO review VALUES (NULL, 1, 1, '2018-07-11', "Hello it's me", 5, 4, 5, 5, 5, 4);
-INSERT INTO review VALUES (NULL, 16, 1, '2016-03-19', "I like stuff", 5, 4, 5, 5, 5, 4);
-INSERT INTO review VALUES (NULL, 8, 1, '2018-07-11', "What is up?", 5, 4, 5, 5, 5, 4);
+-- INSERT INTO review VALUES (NULL, 1, 1, '2018-07-11', "Hello it's me", 5, 4, 5, 5, 5, 4);
+-- INSERT INTO review VALUES (NULL, 16, 1, '2016-03-19', "I like stuff", 5, 4, 5, 5, 5, 4);
+-- INSERT INTO review VALUES (NULL, 8, 1, '2018-07-11', "What is up?", 5, 4, 5, 5, 5, 4);
 
 
 
