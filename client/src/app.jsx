@@ -3,7 +3,7 @@ import './app.css';
 
 const App = () => (
   <div className="app">
-    <h1> App is not here! </h1>
+    <h1> App is here! </h1>
   </div>
 );
 
