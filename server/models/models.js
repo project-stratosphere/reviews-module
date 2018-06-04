@@ -20,3 +20,19 @@ module.exports.listingAverageStars.get = (listingID) => {
     });
   });
 };
+
+module.exports.listingReviews.get = (listingID) => {
+  return new Promise((resolve, reject) => {
+    let reviewsQuery = 'SELECT review_date, review_text, user.first_name, user.last_name FROM ?? INNER JOIN ?? ON ?? = ?? WHERE ?? = ?';
+    const inserts = ['review', 'user', 'user.user_id', 'review.user_id', 'listing_id', listingID];
+    reviewsQuery = mysql.format(reviewsQuery, inserts);
+
+    db.dbConnection.query(reviewsQuery, (err, result) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
