@@ -1,12 +1,9 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
 const dbQueries = require('./helpers/queries.js');
 const dataHandlers = require('./helpers/datahandlers.js');
 
 const app = express();
-
-app.use(bodyParser.json());
 
 app.use('/', express.static(path.join(__dirname, '../public')));
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
