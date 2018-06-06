@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContainerReviews should render correctly 1`] = `
+<div>
+  <h3>
+     Reviews Container 
+  </h3>
+</div>
+`;
