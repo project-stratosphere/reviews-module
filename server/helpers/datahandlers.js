@@ -32,5 +32,6 @@ module.exports.calcReviewsAverageStars = (averageStarsArray) => {
     locationAvg,
     checkinAvg,
     valueAvg,
+    numReviews,
   };
 };
