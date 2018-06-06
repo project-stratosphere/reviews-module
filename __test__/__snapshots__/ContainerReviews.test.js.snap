@@ -5,5 +5,6 @@ exports[`ContainerReviews should render correctly 1`] = `
   <h3>
      Reviews Container 
   </h3>
+  <ReviewEntry />
 </div>
 `;

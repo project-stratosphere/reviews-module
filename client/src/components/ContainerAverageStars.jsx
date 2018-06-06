@@ -1,8 +1,8 @@
 import React from 'react';
 
-import TotalReviews from './TotalReviews.jsx';
-import SearchReviews from './SearchReviews.jsx';
-import ReviewsByDescriptor from './ReviewsByDescriptor.jsx';
+import TotalReviews from './TotalReviews';
+import SearchReviews from './SearchReviews';
+import ReviewsByDescriptor from './ReviewsByDescriptor';
 
 const ContainerAverageStars = props => (
   <div>
