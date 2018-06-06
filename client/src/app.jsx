@@ -65,7 +65,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div onClick={this.toggleDisplay}>
+      <div>
         <h1> Top of App </h1>
         <ContainerAverageStars />
         <h1> Break! </h1>
