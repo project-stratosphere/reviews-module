@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReviewsByDescriptor = props => (
+const ReviewStarsByDescriptor = props => (
   <div>
     <h6> Accuracy </h6>
     <h6> Communication </h6>
@@ -11,4 +11,4 @@ const ReviewsByDescriptor = props => (
   </div>
 );
 
-export default ReviewsByDescriptor;
+export default ReviewStarsByDescriptor;

@@ -3,13 +3,13 @@ import { configure, shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';
 
-import ReviewsByDescriptor from '../client/src/components/ReviewsByDescriptor';
+import ReviewStarsByDescriptor from '../client/src/components/ReviewStarsByDescriptor';
 
 configure({ adapter: new Adapter() });
 
-describe('ReviewsByDescriptor', () => {
+describe('ReviewStarsByDescriptor', () => {
   it('should render correctly', () => {
-    const output = shallow(<ReviewsByDescriptor />);
+    const output = shallow(<ReviewStarsByDescriptor />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });

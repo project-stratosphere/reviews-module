@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ReviewsByDescriptor should render correctly 1`] = `
+exports[`ReviewStarsByDescriptor should render correctly 1`] = `
 <div>
   <h6>
      Accuracy 

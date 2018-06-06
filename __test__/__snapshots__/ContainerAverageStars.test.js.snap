@@ -7,6 +7,6 @@ exports[`ContainerAverageStars should render correctly 1`] = `
   </h3>
   <TotalReviews />
   <SearchReviews />
-  <ReviewsByDescriptor />
+  <ReviewStarsByDescriptor />
 </div>
 `;

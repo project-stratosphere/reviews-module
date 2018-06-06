@@ -2,14 +2,14 @@ import React from 'react';
 
 import TotalReviews from './TotalReviews';
 import SearchReviews from './SearchReviews';
-import ReviewsByDescriptor from './ReviewsByDescriptor';
+import ReviewStarsByDescriptor from './ReviewStarsByDescriptor';
 
 const ContainerAverageStars = props => (
   <div>
     <h3> Average Stars Container </h3>
     <TotalReviews />
     <SearchReviews />
-    <ReviewsByDescriptor />
+    <ReviewStarsByDescriptor />
   </div>
 );
 
