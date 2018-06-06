@@ -10,6 +10,5 @@ exports[`TotalReviews should render correctly 1`] = `
   <h6>
      ***** 
   </h6>
-  <SearchReviews />
 </div>
 `;

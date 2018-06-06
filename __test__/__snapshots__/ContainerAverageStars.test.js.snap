@@ -6,5 +6,7 @@ exports[`ContainerAverageStars should render correctly 1`] = `
      Average Stars Container 
   </h3>
   <TotalReviews />
+  <SearchReviews />
+  <ReviewsByDescriptor />
 </div>
 `;
