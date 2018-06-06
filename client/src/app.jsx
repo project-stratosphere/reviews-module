@@ -5,6 +5,24 @@ import axios from 'axios';
 import ContainerAverageStars from './components/ContainerAverageStars.jsx';
 import ContainerReviews from './components/ContainerReviews.jsx';
 
+const placeholderAverageStarsObj = {
+  overallAvg: 2.83,
+  accuracyAvg: 1.71,
+  communicationAvg: 2.57,
+  cleanlinessAvg: 2.29,
+  locationAvg: 3.36,
+  checkinAvg: 3.93,
+  valueAvg: 3.14,
+  numReviews: 14,
+};
+
+const placeholderReviewsArray = [{
+  review_date: '2016-11-04',
+  review_text: 'Laborum eius id rerum et in ratione.',
+  first_name: 'Torey',
+  last_name: 'Larson',
+}];
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,8 +34,8 @@ class App extends React.Component {
     this.logState = this.logState.bind(this);
 
     this.state = {
-      averageStarsObj: {},
-      reviews: [],
+      averageStarsObj: placeholderAverageStarsObj,
+      reviews: placeholderReviewsArray,
     };
   }
 
