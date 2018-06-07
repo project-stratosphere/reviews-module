@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 // import './app.css';
 
-import appHelpers from './helpers/apphelpers';
+import processReviewsArray from './helpers/apphelpers';
 
 import ContainerAverageStars from './components/ContainerAverageStars';
 import ContainerReviews from './components/ContainerReviews';
@@ -14,9 +14,6 @@ class App extends React.Component {
     // API calls
     this.getListingAverageStars = this.getListingAverageStars.bind(this);
     this.getListingReviews = this.getListingReviews.bind(this);
-
-    // Just for testing
-    this.logState = this.logState.bind(this);
 
     this.state = {
       averageStarsObj: {},
@@ -49,7 +46,7 @@ class App extends React.Component {
     axios.get(`/api/listings/${id}/reviews`)
       .then((response) => {
         // console.log(response.data);
-        const data = appHelpers.processReviewsArray(response.data);
+        const data = processReviewsArray(response.data);
         this.setState({
           reviews: data,
         });
@@ -59,12 +56,6 @@ class App extends React.Component {
 
         // console.log(error);
       });
-  }
-
-  // Just for testing.  Can drop into a div using the following tag: onClick={this.logState}
-  logState() {
-    console.log(this.state.averageStarsObj);
-    console.log(this.state.reviews);
   }
 
   render() {
