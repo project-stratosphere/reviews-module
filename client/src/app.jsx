@@ -2,8 +2,10 @@ import React from 'react';
 import axios from 'axios';
 // import './app.css';
 
-import ContainerAverageStars from './components/ContainerAverageStars.jsx';
-import ContainerReviews from './components/ContainerReviews.jsx';
+import appHelpers from './helpers/apphelpers';
+
+import ContainerAverageStars from './components/ContainerAverageStars';
+import ContainerReviews from './components/ContainerReviews';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,8 +26,8 @@ class App extends React.Component {
 
   componentDidMount() {
     // Using parameter 1 for now, just for testing
-    this.getListingReviews(14);
-    this.getListingAverageStars(14);
+    this.getListingReviews(1);
+    this.getListingAverageStars(1);
   }
 
   getListingAverageStars(id) {
@@ -47,8 +49,9 @@ class App extends React.Component {
     axios.get(`/api/listings/${id}/reviews`)
       .then((response) => {
         // console.log(response.data);
+        const data = appHelpers.processReviewsArray(response.data);
         this.setState({
-          reviews: response.data,
+          reviews: data,
         });
       })
       .catch((error) => {

@@ -20,17 +20,15 @@ const convertDateToMonthYYYY = (trimmedDate) => {
   return `${months[month]} ${year}`;
 };
 
-const addUniqIdToReviews = (reviewsArray) => {
-  let counter = 0;
+const processReviewsArray = (reviewsArray) => {
   const reviewsArrayCopy = reviewsArray.slice();
-  reviewsArrayCopy.forEach((reviewObj) => {
-    reviewObj.id = counter;
+  let counter = 0;
+  reviewsArrayCopy.forEach((review) => {
+    review.review_date = convertDateToMonthYYYY(trimDateToYYYYMMDD(review.review_date));
+    review.key = counter;
     counter += 1;
   });
   return reviewsArrayCopy;
 };
 
-
-module.exports.trimDateToYYYYMMDD = trimDateToYYYYMMDD;
-module.exports.convertDateToMonthYYYY = convertDateToMonthYYYY;
-module.exports.addUniqIdToReviews = addUniqIdToReviews;
+module.exports.processReviewsArray = processReviewsArray;

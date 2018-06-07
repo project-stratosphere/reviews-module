@@ -6,7 +6,7 @@ import ReviewEntry from './ReviewEntry';
 const ContainerReviews = props => (
   <div>
     <h3> Reviews Container </h3>
-    {props.reviews.map(review => <ReviewEntry review={review} />)}
+    {props.reviews.map(review => <ReviewEntry key={review.key} review={review} />)}
   </div>
 );
 
@@ -16,6 +16,7 @@ ContainerReviews.propTypes = {
     review_text: PropTypes.string,
     first_name: PropTypes.string,
     last_name: PropTypes.string,
+    key: PropTypes.number,
   })),
 };
 
@@ -25,6 +26,7 @@ ContainerReviews.defaultProps = {
     review_text: 'Laborum eius id rerum et in ratione',
     first_name: 'Toby',
     last_name: 'Keith',
+    key: 0,
   }],
 };
 
