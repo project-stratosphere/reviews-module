@@ -2,6 +2,9 @@
 
 exports[`ReviewEntry should render correctly 1`] = `
 <div>
+  <h5>
+     Begin Review Entry 
+  </h5>
   <h6>
      
     2016-11-04

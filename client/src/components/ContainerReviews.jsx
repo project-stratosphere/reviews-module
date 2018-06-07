@@ -6,7 +6,7 @@ import ReviewEntry from './ReviewEntry';
 const ContainerReviews = props => (
   <div>
     <h3> Reviews Container </h3>
-    <ReviewEntry review={props.reviews[0]} />
+    {props.reviews.map(review => <ReviewEntry review={review} />)}
   </div>
 );
 

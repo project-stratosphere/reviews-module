@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const ReviewEntry = props => (
   <div>
+    <h5> Begin Review Entry </h5>
     <h6> {props.review.review_date} </h6>
     <h6> {props.review.review_text} </h6>
     <h6> {props.review.first_name} </h6>
