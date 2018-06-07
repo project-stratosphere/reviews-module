@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 const ReviewEntry = props => (
   <div>
-    <h6> Reviewer Name </h6>
-    <h6> Review Date </h6>
-    <h6> Review Text </h6>
+    <h6> {props.review.review_date} </h6>
+    <h6> {props.review.review_text} </h6>
+    <h6> {props.review.first_name} </h6>
   </div>
 );
 

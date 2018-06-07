@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 const ReviewStarsByDescriptor = props => (
   <div>
-    <h6> Accuracy </h6>
-    <h6> Communication </h6>
-    <h6> Cleanliness </h6>
-    <h6> Location </h6>
-    <h6> Check-in </h6>
-    <h6> Value </h6>
+    <h6> Accuracy {props.accuracyAvg} </h6>
+    <h6> Communication {props.communicationAvg} </h6>
+    <h6> Cleanliness {props.cleanlinessAvg} </h6>
+    <h6> Location {props.locationAvg} </h6>
+    <h6> Check-in {props.checkinAvg} </h6>
+    <h6> Value {props.valueAvg} </h6>
   </div>
 );
 
