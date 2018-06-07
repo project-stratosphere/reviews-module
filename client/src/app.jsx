@@ -9,6 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    // API calls
     this.getListingAverageStars = this.getListingAverageStars.bind(this);
     this.getListingReviews = this.getListingReviews.bind(this);
 
@@ -57,7 +58,7 @@ class App extends React.Component {
       });
   }
 
-  // Just for testing.  Can drop into a div using the following tag: onClick={this.logState} 
+  // Just for testing.  Can drop into a div using the following tag: onClick={this.logState}
   logState() {
     console.log(this.state.averageStarsObj);
     console.log(this.state.reviews);
@@ -67,12 +68,12 @@ class App extends React.Component {
     return (
       <div>
         <h1> Top of App </h1>
-        <ContainerAverageStars averageStarsObj={this.state.averageStarsObj}/>
+        <ContainerAverageStars averageStarsObj={this.state.averageStarsObj} />
         <h1> Break! </h1>
-        <ContainerReviews reviews={this.state.reviews}/>
+        <ContainerReviews reviews={this.state.reviews} />
         <h1> End Module </h1>
       </div>
-    )
+    );
   }
 }
 
