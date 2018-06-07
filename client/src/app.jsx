@@ -67,9 +67,9 @@ class App extends React.Component {
     return (
       <div>
         <h1> Top of App </h1>
-        <ContainerAverageStars />
+        <ContainerAverageStars averageStarsObj={this.state.averageStarsObj}/>
         <h1> Break! </h1>
-        <ContainerReviews />
+        <ContainerReviews reviews={this.state.reviews}/>
         <h1> End Module </h1>
       </div>
     )

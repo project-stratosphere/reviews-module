@@ -8,9 +8,19 @@ import ReviewStarsByDescriptor from './ReviewStarsByDescriptor';
 const ContainerAverageStars = props => (
   <div>
     <h3> Average Stars Container </h3>
-    <TotalReviews />
+    <TotalReviews
+      overallAvg={props.averageStarsObj.overallAvg}
+      numReviews={props.averageStarsObj.numReviews}
+    />
     <SearchReviews />
-    <ReviewStarsByDescriptor />
+    <ReviewStarsByDescriptor
+      accuracyAvg={props.averageStarsObj.accuracyAvg}
+      communicationAvg={props.averageStarsObj.communicationAvg}
+      cleanlinessAvg={props.averageStarsObj.cleanlinessAvg}
+      locationAvg={props.averageStarsObj.locationAvg}
+      checkinAvg={props.averageStarsObj.checkinAvg}
+      valueAvg={props.averageStarsObj.valueAvg}
+    />
   </div>
 );
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const TotalReviews = props => (
   <div id="review-overall-average">
-    <h6> {props.numReviews} </h6>
+    <h6> {props.numReviews} Reviews </h6>
     <h6> {props.overallAvg} Star </h6>
   </div>
 );

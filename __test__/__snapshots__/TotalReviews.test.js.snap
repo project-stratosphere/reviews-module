@@ -5,10 +5,14 @@ exports[`TotalReviews should render correctly 1`] = `
   id="review-overall-average"
 >
   <h6>
-     315 Reviews 
+     
+    1
+     Reviews 
   </h6>
   <h6>
-     ***** 
+     
+    1
+     Star 
   </h6>
 </div>
 `;

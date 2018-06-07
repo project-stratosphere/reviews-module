@@ -3,13 +3,19 @@
 exports[`ReviewEntry should render correctly 1`] = `
 <div>
   <h6>
-     Reviewer Name 
+     
+    2016-11-04
+     
   </h6>
   <h6>
-     Review Date 
+     
+    Laborum eius id rerum et in ratione
+     
   </h6>
   <h6>
-     Review Text 
+     
+    Toby
+     
   </h6>
 </div>
 `;
