@@ -5,8 +5,18 @@ exports[`ContainerAverageStars should render correctly 1`] = `
   <h3>
      Average Stars Container 
   </h3>
-  <TotalReviews />
+  <TotalReviews
+    numReviews={1}
+    overallAvg={1}
+  />
   <SearchReviews />
-  <ReviewStarsByDescriptor />
+  <ReviewStarsByDescriptor
+    accuracyAvg={1}
+    checkinAvg={1}
+    cleanlinessAvg={1}
+    communicationAvg={1}
+    locationAvg={1}
+    valueAvg={1}
+  />
 </div>
 `;

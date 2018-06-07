@@ -12,4 +12,22 @@ const ReviewStarsByDescriptor = props => (
   </div>
 );
 
+ReviewStarsByDescriptor.propTypes = {
+  accuracyAvg: PropTypes.number,
+  communicationAvg: PropTypes.number,
+  cleanlinessAvg: PropTypes.number,
+  locationAvg: PropTypes.number,
+  checkinAvg: PropTypes.number,
+  valueAvg: PropTypes.number,
+};
+
+ReviewStarsByDescriptor.defaultProps = {
+  accuracyAvg: 1,
+  communicationAvg: 1,
+  cleanlinessAvg: 1,
+  locationAvg: 1,
+  checkinAvg: 1,
+  valueAvg: 1,
+};
+
 export default ReviewStarsByDescriptor;

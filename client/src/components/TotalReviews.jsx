@@ -8,4 +8,14 @@ const TotalReviews = props => (
   </div>
 );
 
+TotalReviews.propTypes = {
+  overallAvg: PropTypes.number,
+  numReviews: PropTypes.number,
+};
+
+TotalReviews.defaultProps = {
+  overallAvg: 1,
+  numReviews: 1,
+};
+
 export default TotalReviews;

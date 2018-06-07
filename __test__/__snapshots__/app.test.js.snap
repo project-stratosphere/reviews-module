@@ -5,7 +5,20 @@ exports[`App should render correctly 1`] = `
   <h1>
      Top of App 
   </h1>
-  <ContainerAverageStars />
+  <ContainerAverageStars
+    averageStarsObj={
+      Object {
+        "accuracyAvg": 1,
+        "checkinAvg": 1,
+        "cleanlinessAvg": 1,
+        "communicationAvg": 1,
+        "locationAvg": 1,
+        "numReviews": 1,
+        "overallAvg": 1,
+        "valueAvg": 1,
+      }
+    }
+  />
   <h1>
      Break! 
   </h1>
