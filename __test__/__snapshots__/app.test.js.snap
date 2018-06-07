@@ -5,11 +5,15 @@ exports[`App should render correctly 1`] = `
   <h1>
      Top of App 
   </h1>
-  <ContainerAverageStars />
+  <ContainerAverageStars
+    averageStarsObj={Object {}}
+  />
   <h1>
      Break! 
   </h1>
-  <ContainerReviews />
+  <ContainerReviews
+    reviews={Array []}
+  />
   <h1>
      End Module 
   </h1>

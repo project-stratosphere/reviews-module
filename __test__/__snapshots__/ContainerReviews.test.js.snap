@@ -5,5 +5,17 @@ exports[`ContainerReviews should render correctly 1`] = `
   <h3>
      Reviews Container 
   </h3>
+  <ReviewEntry
+    key="0"
+    review={
+      Object {
+        "first_name": "Toby",
+        "key": 0,
+        "last_name": "Keith",
+        "review_date": "2016-11-04",
+        "review_text": "Laborum eius id rerum et in ratione",
+      }
+    }
+  />
 </div>
 `;
