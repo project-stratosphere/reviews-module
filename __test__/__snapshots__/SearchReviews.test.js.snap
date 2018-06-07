@@ -2,8 +2,6 @@
 
 exports[`SearchReviews should render correctly 1`] = `
 <div>
-  <h6>
-     Search reviews 
-  </h6>
+   Search Reviews  
 </div>
 `;

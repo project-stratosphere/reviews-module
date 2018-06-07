@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// background-color: #fff;
-
 export const Wrapper = styled.div`
   box-sizing: border-box;
   border-bottom: .5px solid gainsboro;
@@ -38,11 +36,4 @@ export const ReviewText = styled.div`
   padding-top: 22px;
   padding-bottom: 24px;
 `;
-
-
-
-
-
-
-
 

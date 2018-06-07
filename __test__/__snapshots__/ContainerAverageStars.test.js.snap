@@ -5,11 +5,10 @@ exports[`ContainerAverageStars should render correctly 1`] = `
   <h3>
      Average Stars Container 
   </h3>
-  <TotalReviews
+  <SubcontainerAverageStarsHeader
     numReviews={1}
     overallAvg={1}
   />
-  <SearchReviews />
   <ReviewStarsByDescriptor
     accuracyAvg={1}
     checkinAvg={1}

@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import TotalReviews from './TotalReviews';
-import SearchReviews from './SearchReviews';
+import SubcontainerAverageStarsHeader from './SubcontainerAverageStarsHeader';
 import ReviewStarsByDescriptor from './ReviewStarsByDescriptor';
 
 const ContainerAverageStars = props => (
   <div>
     <h3> Average Stars Container </h3>
-    <TotalReviews
+    <SubcontainerAverageStarsHeader
       overallAvg={props.averageStarsObj.overallAvg}
       numReviews={props.averageStarsObj.numReviews}
     />
-    <SearchReviews />
     <ReviewStarsByDescriptor
       accuracyAvg={props.averageStarsObj.accuracyAvg}
       communicationAvg={props.averageStarsObj.communicationAvg}

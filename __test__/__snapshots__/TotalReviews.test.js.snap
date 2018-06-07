@@ -1,18 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TotalReviews should render correctly 1`] = `
-<div
-  id="review-overall-average"
->
-  <h6>
+<span>
+  <styled.span>
      
     1
      Reviews 
-  </h6>
-  <h6>
-     
-    1
-     Star 
-  </h6>
-</div>
+  </styled.span>
+  <StarRatings
+    changeRating={null}
+    gradientPathName=""
+    ignoreInlineStyles={false}
+    numberOfStars={5}
+    rating={1}
+    starDimension="18px"
+    starEmptyColor="rgb(203, 211, 227)"
+    starHoverColor="rgb(230, 67, 47)"
+    starRatedColor="#008489"
+    starSpacing="1px"
+    svgIconPath="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+    svgIconViewBox="0 0 51 48"
+    typeOfWidget="Star"
+  />
+</span>
 `;

@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StarRatings from 'react-star-ratings';
+
+import { TotalReviewsText } from './styles/TotalReviews.styles';
 
 const TotalReviews = props => (
-  <div id="review-overall-average">
-    <h6> {props.numReviews} Reviews </h6>
-    <h6> {props.overallAvg} Star </h6>
-  </div>
+  <span>
+    <TotalReviewsText> {props.numReviews} Reviews </TotalReviewsText>
+    <StarRatings
+      rating={props.overallAvg}
+      starDimension="18px"
+      starSpacing="1px"
+      starRatedColor="#008489"
+    />
+  </span>
 );
 
 TotalReviews.propTypes = {
