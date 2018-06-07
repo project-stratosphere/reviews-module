@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TotalReviews = props => (
   <div id="review-overall-average">
