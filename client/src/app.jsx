@@ -23,8 +23,8 @@ class App extends React.Component {
 
   componentDidMount() {
     // Using parameter 1 for now, just for testing
-    this.getListingReviews(1);
-    this.getListingAverageStars(1);
+    this.getListingReviews(14);
+    this.getListingAverageStars(14);
   }
 
   getListingAverageStars(id) {
