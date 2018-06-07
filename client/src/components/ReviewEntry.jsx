@@ -1,13 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {
+  Wrapper,
+  ReviewUser,
+  ReviewDate,
+  ReviewText,
+} from './styles/ReviewEntry.styles';
+
 const ReviewEntry = props => (
-  <div>
-    <h5> Begin Review Entry </h5>
-    <h6> {props.review.review_date} </h6>
-    <h6> {props.review.review_text} </h6>
-    <h6> {props.review.first_name} </h6>
-  </div>
+  <Wrapper>
+    <ReviewUser> {props.review.first_name} </ReviewUser>
+    <ReviewDate> {props.review.review_date} </ReviewDate>
+    <ReviewText> {props.review.review_text} </ReviewText>
+  </Wrapper>
 );
 
 ReviewEntry.propTypes = {

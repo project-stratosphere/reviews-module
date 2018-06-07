@@ -1,24 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReviewEntry should render correctly 1`] = `
-<div>
-  <h5>
-     Begin Review Entry 
-  </h5>
-  <h6>
-     
-    2016-11-04
-     
-  </h6>
-  <h6>
-     
-    Laborum eius id rerum et in ratione
-     
-  </h6>
-  <h6>
+<styled.div>
+  <styled.div>
      
     Toby
      
-  </h6>
-</div>
+  </styled.div>
+  <styled.div>
+     
+    2016-11-04
+     
+  </styled.div>
+  <styled.div>
+     
+    Laborum eius id rerum et in ratione
+     
+  </styled.div>
+</styled.div>
 `;
