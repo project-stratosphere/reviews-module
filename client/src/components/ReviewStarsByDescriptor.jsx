@@ -2,35 +2,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StarRatings from 'react-star-ratings';
 
+import StarsByDescriptor from './StarsByDescriptor';
+
 import {
   Wrapper,
   ColumnWrapper,
   DescriptorWrapper,
+  StarFormat,
   DescriptorText,
 } from './styles/ReviewStarsByDescriptor.styles';
 
 const ReviewStarsByDescriptor = props => (
   <Wrapper>
     <ColumnWrapper>
-      <div>
-        <DescriptorText> Accuracy {props.accuracyAvg} </DescriptorText>
-      </div>
-      <div>
-        <DescriptorText> Communication {props.communicationAvg} </DescriptorText>
-      </div>
-      <div>
-        <DescriptorText> Cleanliness {props.cleanlinessAvg} </DescriptorText>
-      </div>
+      <DescriptorWrapper>
+        <DescriptorText> Accuracy </DescriptorText>
+        <StarFormat> <StarsByDescriptor avg={props.accuracyAvg} /> </StarFormat>
+      </DescriptorWrapper>
+      <DescriptorWrapper>
+        <DescriptorText> Communication </DescriptorText>
+        <StarsByDescriptor avg={props.communicationAvg} />
+      </DescriptorWrapper>
+      <DescriptorWrapper>
+        <DescriptorText> Cleanliness </DescriptorText>
+        <StarsByDescriptor avg={props.cleanlinessAvg} />
+      </DescriptorWrapper>
     </ColumnWrapper>
     <ColumnWrapper>
       <DescriptorWrapper>
-        <DescriptorText> Location {props.locationAvg} </DescriptorText>
+        <DescriptorText> Location </DescriptorText>
+        <StarsByDescriptor avg={props.locationAvg} />
       </DescriptorWrapper>
       <DescriptorWrapper>
-        <DescriptorText> Check-in {props.checkinAvg} </DescriptorText>
+        <DescriptorText> Check-in </DescriptorText>
+        <StarsByDescriptor avg={props.checkinAvg} />
       </DescriptorWrapper>
       <DescriptorWrapper>
-        <DescriptorText> Value {props.valueAvg} </DescriptorText>
+        <DescriptorText> Value </DescriptorText>
+        <StarsByDescriptor avg={props.valueAvg} />
       </DescriptorWrapper>
     </ColumnWrapper>
   </Wrapper>
