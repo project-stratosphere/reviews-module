@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TotalReviews should render correctly 1`] = `
-<span>
+<styled.span>
   <styled.span>
      
     1
@@ -22,5 +22,5 @@ exports[`TotalReviews should render correctly 1`] = `
     svgIconViewBox="0 0 51 48"
     typeOfWidget="Star"
   />
-</span>
+</styled.span>
 `;
