@@ -6,7 +6,7 @@ const StarsByDescriptor = props => (
   <StarRatings
     rating={props.avg}
     starDimension="18px"
-    starSpacing="1px"
+    starSpacing="2px"
     starRatedColor="#008489"
   />
 );

@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.span`
+  min-width: 325px;
+`;
+
 export const TotalReviewsText = styled.span`
   font-weight: bold;
   color: #484848;

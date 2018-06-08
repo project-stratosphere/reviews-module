@@ -6,4 +6,6 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   border-bottom: .5px solid gainsboro;
   padding-bottom: 24px;
+  max-width: 650px;
+  background-color: white;
 `;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   box-sizing: border-box;
   border-bottom: .5px solid gainsboro;
+  max-width: 650px;
 `;
 
 export const ReviewUser = styled.div`

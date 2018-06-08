@@ -2,10 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StarRatings from 'react-star-ratings';
 
-import { TotalReviewsText } from './styles/TotalReviews.styles';
+import {
+  Wrapper,
+  TotalReviewsText,
+} from './styles/TotalReviews.styles';
 
 const TotalReviews = props => (
-  <span>
+  <Wrapper>
     <TotalReviewsText> {props.numReviews} Reviews </TotalReviewsText>
     <StarRatings
       rating={props.overallAvg}
@@ -13,7 +16,7 @@ const TotalReviews = props => (
       starSpacing="1px"
       starRatedColor="#008489"
     />
-  </span>
+  </Wrapper>
 );
 
 TotalReviews.propTypes = {

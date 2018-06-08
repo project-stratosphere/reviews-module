@@ -1,11 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-// import './app.css';
 
 import processReviewsArray from './helpers/apphelpers';
 
 import ContainerAverageStars from './components/ContainerAverageStars';
 import ContainerReviews from './components/ContainerReviews';
+
+import {
+  OuterWrapper,
+  InnerWrapper,
+} from './App.styles';
 
 class App extends React.Component {
   constructor(props) {
@@ -60,13 +64,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1> Top of App </h1>
-        <ContainerAverageStars averageStarsObj={this.state.averageStarsObj} />
-        <h1> Break! </h1>
-        <ContainerReviews reviews={this.state.reviews} />
-        <h1> End Module </h1>
-      </div>
+      <OuterWrapper>
+        <InnerWrapper>
+          <ContainerAverageStars averageStarsObj={this.state.averageStarsObj} />
+          <ContainerReviews reviews={this.state.reviews} />
+        </InnerWrapper>
+      </OuterWrapper>
     );
   }
 }
