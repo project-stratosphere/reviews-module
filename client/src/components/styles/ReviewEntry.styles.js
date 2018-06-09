@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   box-sizing: border-box;
-  border-bottom: .5px solid gainsboro;
+  border-bottom: .5px solid #ccc;
   max-width: 650px;
 `;
 

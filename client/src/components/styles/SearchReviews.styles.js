@@ -9,7 +9,7 @@ export const Wrapper = styled.span`
 `;
 
 export const SearchFieldWrapper = styled.input`
-  min-width: 204px;
+  min-width: 200px;
   border: 1px solid #ccc;
   border-radius: 2px;
 `;
