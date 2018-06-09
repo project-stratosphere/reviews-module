@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 import {
   Wrapper,
-  SearchFieldWrapper,
+  SearchField,
 } from './styles/SearchReviews.styles';
 
 const SearchReviews = props => (
-  <Wrapper> 
-  <SearchFieldWrapper>
-  </SearchFieldWrapper>
+  <Wrapper>
+    <SearchField placeholder="Search reviews" />
   </Wrapper>
 );
 

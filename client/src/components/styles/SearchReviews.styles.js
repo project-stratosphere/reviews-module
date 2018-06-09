@@ -8,8 +8,15 @@ export const Wrapper = styled.span`
   min-width: 325px;
 `;
 
-export const SearchFieldWrapper = styled.input`
+export const SearchField = styled.input`
   min-width: 200px;
   border: 1px solid #ccc;
   border-radius: 2px;
+  padding: 7px 0px 8px 20px;
+  font-weight: 600;
+  color: #484848;
+  font-family: Circular,BlinkMacSystemFont,Helvetica Neue,sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
 `;
+  
