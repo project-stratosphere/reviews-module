@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Wrapper } from './styles/SearchReviews.styles';
+import {
+  Wrapper,
+  SearchFieldWrapper,
+} from './styles/SearchReviews.styles';
 
 const SearchReviews = props => (
-  <Wrapper> Search Reviews  </Wrapper>
+  <Wrapper> 
+  <SearchFieldWrapper>
+  </SearchFieldWrapper>
+  </Wrapper>
 );
 
 export default SearchReviews;

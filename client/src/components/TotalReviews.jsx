@@ -2,20 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StarRatings from 'react-star-ratings';
 
+import StarsOverall from './StarsOverall';
+
 import {
   Wrapper,
-  TotalReviewsText,
+  TotalReviewsTextWrapper,
+  StarsOverallWrapper,
 } from './styles/TotalReviews.styles';
 
 const TotalReviews = props => (
   <Wrapper>
-    <TotalReviewsText> {props.numReviews} Reviews </TotalReviewsText>
-    <StarRatings
-      rating={props.overallAvg}
-      starDimension="18px"
-      starSpacing="1px"
-      starRatedColor="#008489"
-    />
+    <TotalReviewsTextWrapper> {props.numReviews} Reviews </TotalReviewsTextWrapper>
+    <StarsOverallWrapper>
+      <StarsOverall overallAvg={props.overallAvg} />
+    </StarsOverallWrapper>
   </Wrapper>
 );
 
