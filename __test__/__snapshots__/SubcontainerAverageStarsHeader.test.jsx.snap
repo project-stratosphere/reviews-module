@@ -3,11 +3,11 @@
 exports[`SubcontainerAverageStarsHeader should render correctly 1`] = `
 <styled.div>
   <TotalReviews
-    numReviews={1}
-    overallAvg={1}
+    numReviews={18}
+    overallAvg={3.4}
   />
   <SearchReviews
-    currentSearch=""
+    currentSearch="pineapples"
     handleSearchChange={[Function]}
     handleSearchSubmit={[Function]}
   />

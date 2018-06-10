@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StarsOverall should render correctly 1`] = `
+<StarRatings
+  changeRating={null}
+  gradientPathName=""
+  ignoreInlineStyles={false}
+  numberOfStars={5}
+  rating={3.7}
+  starDimension="20px"
+  starEmptyColor="rgb(203, 211, 227)"
+  starHoverColor="rgb(230, 67, 47)"
+  starRatedColor="#008489"
+  starSpacing="2px"
+  svgIconPath="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+  svgIconViewBox="0 0 51 48"
+  typeOfWidget="Star"
+/>
+`;

@@ -3,13 +3,15 @@ import { configure, shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';
 
-import SubcontainerAverageStarsHeader from '../client/src/components/SubcontainerAverageStarsHeader';
+import StarsOverall from '../client/src/components/StarsOverall';
 
 configure({ adapter: new Adapter() });
 
-describe('SubcontainerAverageStarsHeader', () => {
+const overallAvg = 3.7;
+
+describe('StarsOverall', () => {
   it('should render correctly', () => {
-    const output = shallow(<SubcontainerAverageStarsHeader />);
+    const output = shallow(<StarsOverall overallAvg={overallAvg} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });
