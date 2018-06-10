@@ -21,6 +21,7 @@ class App extends React.Component {
 
     // Methods
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
 
     this.state = {
       averageStarsObj: {},
@@ -72,14 +73,20 @@ class App extends React.Component {
     });
   }
 
+  handleSearchSubmit(event) {
+    if (event.key === 'Enter') {
+      console.log('test');
+    }
+  }
+
   render() {
-    {console.log('re render?')}
     return (
       <AppOuterWrapper>
         <AppInnerWrapper>
           <ContainerAverageStars
             averageStarsObj={this.state.averageStarsObj}
             handleSearchChange={this.handleSearchChange}
+            handleSearchSubmit={this.handleSearchSubmit}
           />
           <ContainerReviews reviews={this.state.reviews} />
         </AppInnerWrapper>

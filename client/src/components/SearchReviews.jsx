@@ -8,13 +8,23 @@ import {
 
 const SearchReviews = props => (
   <SearchFieldWrapper>
-    {console.log(props)}
-    <SearchField 
-      placeholder="Search reviews" 
-      type="text" 
+    <SearchField
+      placeholder="Search reviews"
+      type="text"
       onChange={props.handleSearchChange}
+      onKeyPress={props.handleSearchSubmit}
     />
   </SearchFieldWrapper>
 );
+
+SearchReviews.propTypes = {
+  handleSearchChange: PropTypes.func,
+  handleSearchSubmit: PropTypes.func,
+};
+
+SearchReviews.defaultProps = {
+  handleSearchChange: () => {},
+  handleSearchSubmit: () => {},
+};
 
 export default SearchReviews;

@@ -12,7 +12,10 @@ const SubcontainerAverageStarsHeader = props => (
       overallAvg={props.overallAvg}
       numReviews={props.numReviews}
     />
-    <SearchReviews handleSearchChange={props.handleSearchChange} />
+    <SearchReviews 
+      handleSearchChange={props.handleSearchChange}
+      handleSearchSubmit={props.handleSearchSubmit}
+    />
   </SubContainerAverageStarsHeaderWrapper>
 );
 
@@ -20,12 +23,14 @@ SubcontainerAverageStarsHeader.propTypes = {
   overallAvg: PropTypes.number,
   numReviews: PropTypes.number,
   handleSearchChange: PropTypes.func,
+  handleSearchSubmit: PropTypes.func,
 };
 
 SubcontainerAverageStarsHeader.defaultProps = {
   overallAvg: 1,
   numReviews: 1,
   handleSearchChange: () => {},
+  handleSearchSubmit: () => {},
 };
 
 export default SubcontainerAverageStarsHeader;
