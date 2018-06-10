@@ -7,11 +7,11 @@ import StarsOverall from '../client/src/components/StarsOverall';
 
 configure({ adapter: new Adapter() });
 
-const overallAvg = 3.7;
+const dummyOverallAvg = 3.7;
 
 describe('StarsOverall', () => {
   it('should render correctly', () => {
-    const output = shallow(<StarsOverall overallAvg={overallAvg} />);
+    const output = shallow(<StarsOverall overallAvg={dummyOverallAvg} />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });

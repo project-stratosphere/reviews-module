@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewStarsByDescriptor should render correctly 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div>
+      <styled.span>
+         Accuracy 
+      </styled.span>
+      <StarsByDescriptor
+        avg={2.4}
+      />
+    </styled.div>
+    <styled.div>
+      <styled.span>
+         Communication 
+      </styled.span>
+      <StarsByDescriptor
+        avg={1.8}
+      />
+    </styled.div>
+    <styled.div>
+      <styled.span>
+         Cleanliness 
+      </styled.span>
+      <StarsByDescriptor
+        avg={2.3}
+      />
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <styled.div>
+      <styled.span>
+         Location 
+      </styled.span>
+      <StarsByDescriptor
+        avg={4.4}
+      />
+    </styled.div>
+    <styled.div>
+      <styled.span>
+         Check-in 
+      </styled.span>
+      <StarsByDescriptor
+        avg={1.1}
+      />
+    </styled.div>
+    <styled.div>
+      <styled.span>
+         Value 
+      </styled.span>
+      <StarsByDescriptor
+        avg={3}
+      />
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;
