@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StarRatings from 'react-star-ratings';
 
 import StarsByDescriptor from './StarsByDescriptor';
 
@@ -8,7 +7,6 @@ import {
   Wrapper,
   ColumnWrapper,
   DescriptorWrapper,
-  StarFormat,
   DescriptorText,
 } from './styles/ReviewStarsByDescriptor.styles';
 
@@ -17,7 +15,7 @@ const ReviewStarsByDescriptor = props => (
     <ColumnWrapper>
       <DescriptorWrapper>
         <DescriptorText> Accuracy </DescriptorText>
-        <StarFormat> <StarsByDescriptor avg={props.accuracyAvg} /> </StarFormat>
+        <StarsByDescriptor avg={props.accuracyAvg} />
       </DescriptorWrapper>
       <DescriptorWrapper>
         <DescriptorText> Communication </DescriptorText>

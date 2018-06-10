@@ -9,4 +9,4 @@ export const WrapperAvgStars = styled.span`
   display: flex;
   justify-content: center;
   background-color: green;
-`
+`;

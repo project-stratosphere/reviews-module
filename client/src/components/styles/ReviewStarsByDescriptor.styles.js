@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import StarRatings from 'react-star-ratings';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -22,10 +21,6 @@ export const DescriptorWrapper = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: 6px 0px 6px 0px;
-`;
-
-export const StarFormat = styled.span`
-
 `;
 
 export const DescriptorText = styled.span`

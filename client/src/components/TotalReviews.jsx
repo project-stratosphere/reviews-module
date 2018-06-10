@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StarRatings from 'react-star-ratings';
 
 import StarsOverall from './StarsOverall';
 

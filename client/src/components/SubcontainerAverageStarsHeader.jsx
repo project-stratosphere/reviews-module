@@ -12,7 +12,7 @@ const SubcontainerAverageStarsHeader = props => (
       overallAvg={props.overallAvg}
       numReviews={props.numReviews}
     />
-    <SearchReviews />  
+    <SearchReviews />
   </Wrapper>
 );
 
