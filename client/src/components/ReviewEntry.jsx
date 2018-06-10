@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Wrapper,
-  ReviewUser,
-  ReviewDate,
-  ReviewText,
+  ReviewEntryWrapper,
+  ReviewUserWrapper,
+  ReviewDateWrapper,
+  ReviewTextWrapper,
 } from './styles/ReviewEntry.styles';
 
 const ReviewEntry = props => (
-  <Wrapper>
-    <ReviewUser> {props.review.first_name} </ReviewUser>
-    <ReviewDate> {props.review.review_date} </ReviewDate>
-    <ReviewText> {props.review.review_text} </ReviewText>
-  </Wrapper>
+  <ReviewEntryWrapper>
+    <ReviewUserWrapper> {props.review.first_name} </ReviewUserWrapper>
+    <ReviewDateWrapper> {props.review.review_date} </ReviewDateWrapper>
+    <ReviewTextWrapper> {props.review.review_text} </ReviewTextWrapper>
+  </ReviewEntryWrapper>
 );
 
 ReviewEntry.propTypes = {

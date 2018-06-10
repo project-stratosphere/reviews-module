@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import ReviewEntry from './ReviewEntry';
 
-import { Wrapper } from './styles/ContainerReviews.styles';
+import { BasicWrapperFlexColumnDiv } from './styles/MasterStyles.styles';
 
 const ContainerReviews = props => (
-  <Wrapper>
+  <BasicWrapperFlexColumnDiv>
     {props.reviews.map(review => <ReviewEntry key={review.key} review={review} />)}
-  </Wrapper>
+  </BasicWrapperFlexColumnDiv>
 );
 
 ContainerReviews.propTypes = {

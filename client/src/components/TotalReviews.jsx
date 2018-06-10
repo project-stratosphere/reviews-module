@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 import StarsOverall from './StarsOverall';
 
 import {
-  Wrapper,
+  TotalReviewsWrapper,
   TotalReviewsTextWrapper,
   StarsOverallWrapper,
 } from './styles/TotalReviews.styles';
 
 const TotalReviews = props => (
-  <Wrapper>
+  <TotalReviewsWrapper>
     <TotalReviewsTextWrapper> {props.numReviews} Reviews </TotalReviewsTextWrapper>
     <StarsOverallWrapper>
       <StarsOverall overallAvg={props.overallAvg} />
     </StarsOverallWrapper>
-  </Wrapper>
+  </TotalReviewsWrapper>
 );
 
 TotalReviews.propTypes = {

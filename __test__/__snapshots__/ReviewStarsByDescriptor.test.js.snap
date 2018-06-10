@@ -7,13 +7,9 @@ exports[`ReviewStarsByDescriptor should render correctly 1`] = `
       <styled.span>
          Accuracy 
       </styled.span>
-      <styled.span>
-         
-        <StarsByDescriptor
-          avg={1}
-        />
-         
-      </styled.span>
+      <StarsByDescriptor
+        avg={1}
+      />
     </styled.div>
     <styled.div>
       <styled.span>

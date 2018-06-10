@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContainerAverageStars should render correctly 1`] = `
+<styled.div>
+  <styled.span>
+    <SubcontainerAverageStarsHeader
+      numReviews={13}
+      overallAvg={2.9}
+    />
+  </styled.span>
+  <ReviewStarsByDescriptor
+    accuracyAvg={2.85}
+    checkinAvg={3.23}
+    cleanlinessAvg={3.54}
+    communicationAvg={2.77}
+    locationAvg={2.62}
+    valueAvg={2.38}
+  />
+</styled.div>
+`;

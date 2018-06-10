@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  Wrapper,
+  SearchFieldWrapper,
   SearchField,
 } from './styles/SearchReviews.styles';
 
 const SearchReviews = props => (
-  <Wrapper>
+  <SearchFieldWrapper>
     <SearchField placeholder="Search reviews" />
-  </Wrapper>
+  </SearchFieldWrapper>
 );
 
 export default SearchReviews;

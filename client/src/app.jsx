@@ -7,8 +7,8 @@ import ContainerAverageStars from './components/ContainerAverageStars';
 import ContainerReviews from './components/ContainerReviews';
 
 import {
-  OuterWrapper,
-  InnerWrapper,
+  AppOuterWrapper,
+  AppInnerWrapper,
 } from './App.styles';
 
 class App extends React.Component {
@@ -64,12 +64,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <OuterWrapper>
-        <InnerWrapper>
+      <AppOuterWrapper>
+        <AppInnerWrapper>
           <ContainerAverageStars averageStarsObj={this.state.averageStarsObj} />
           <ContainerReviews reviews={this.state.reviews} />
-        </InnerWrapper>
-      </OuterWrapper>
+        </AppInnerWrapper>
+      </AppOuterWrapper>
     );
   }
 }

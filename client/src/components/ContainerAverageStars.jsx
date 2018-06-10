@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 import SubcontainerAverageStarsHeader from './SubcontainerAverageStarsHeader';
 import ReviewStarsByDescriptor from './ReviewStarsByDescriptor';
 
-import {
-  Wrapper,
-  WrapperAvgStars,
-} from './styles/ContainerAverageStars.styles';
+import { BasicWrapperFlexColumnDiv } from './styles/MasterStyles.styles';
+import { WrapperAvgStars } from './styles/ContainerAverageStars.styles';
 
 const ContainerAverageStars = props => (
-  <Wrapper>
+  <BasicWrapperFlexColumnDiv>
     <WrapperAvgStars>
       <SubcontainerAverageStarsHeader
         overallAvg={props.averageStarsObj.overallAvg}
@@ -25,7 +23,7 @@ const ContainerAverageStars = props => (
       checkinAvg={props.averageStarsObj.checkinAvg}
       valueAvg={props.averageStarsObj.valueAvg}
     />
-  </Wrapper>
+  </BasicWrapperFlexColumnDiv>
 );
 
 ContainerAverageStars.propTypes = {

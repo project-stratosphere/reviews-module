@@ -1,18 +1,17 @@
 import styled from 'styled-components';
+import {
+  BasicWrapperFlexRowSpan,
+  BasicTextFormatSpan,
+} from './MasterStyles.styles';
 
-export const Wrapper = styled.span`
+export const TotalReviewsWrapper = BasicWrapperFlexRowSpan.extend`
   min-width: 325px;
-  display: flex;
-  flex-direction: row;
   align-content: center;
 `;
 
-export const TotalReviewsTextWrapper = styled.span`
+export const TotalReviewsTextWrapper = BasicTextFormatSpan.extend`
   font-weight: bold;
-  color: #484848;
-  font-family: Circular,BlinkMacSystemFont,Helvetica Neue,sans-serif;
   font-size: 24px;
-  -webkit-font-smoothing: antialiased;
 `;
 
 export const StarsOverallWrapper = styled.span`

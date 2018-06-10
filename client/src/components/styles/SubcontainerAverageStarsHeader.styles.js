@@ -7,5 +7,4 @@ export const Wrapper = styled.div`
   border-bottom: .5px solid #ccc;
   padding-bottom: 24px;
   max-width: 650px;
-  background-color: white;
 `;
