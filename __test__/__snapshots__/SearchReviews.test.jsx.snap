@@ -7,7 +7,7 @@ exports[`SearchReviews should render correctly 1`] = `
     onKeyPress={[Function]}
     placeholder="Search reviews"
     type="text"
-    value=""
+    value="Diablo II"
   />
 </styled.span>
 `;

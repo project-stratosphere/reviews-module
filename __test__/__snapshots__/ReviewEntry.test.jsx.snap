@@ -4,17 +4,17 @@ exports[`ReviewEntry should render correctly 1`] = `
 <styled.div>
   <styled.div>
      
-    Toby
+    Peggie
      
   </styled.div>
   <styled.div>
      
-    2016-11-04
+    2017-02-12T08:00:00.000Z
      
   </styled.div>
   <styled.div>
      
-    Laborum eius id rerum et in ratione
+    Debitis sequi id nam optio iste molestias dolores dolorem ex.
      
   </styled.div>
 </styled.div>
