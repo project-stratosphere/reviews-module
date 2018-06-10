@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContainerReviews should render correctly 1`] = `
+<styled.div>
+  <ReviewEntry
+    key="0"
+    review={
+      Object {
+        "first_name": "Peggie",
+        "key": 0,
+        "last_name": "Oberbrunner",
+        "review_date": "February 2017",
+        "review_text": "Debitis sequi id nam optio iste molestias dolores dolorem ex.",
+      }
+    }
+  />
+  <ReviewEntry
+    key="1"
+    review={
+      Object {
+        "first_name": "Jasmin",
+        "key": 1,
+        "last_name": "Schmidt",
+        "review_date": "October 2016",
+        "review_text": "Dolore doloribus eius numquam sunt sapiente quos officia quod nulla.",
+      }
+    }
+  />
+</styled.div>
+`;
