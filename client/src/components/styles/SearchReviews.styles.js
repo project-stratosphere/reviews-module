@@ -19,4 +19,4 @@ export const SearchField = styled.input`
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
 `;
-  
+

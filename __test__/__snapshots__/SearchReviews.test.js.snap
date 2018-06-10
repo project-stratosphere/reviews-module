@@ -2,6 +2,8 @@
 
 exports[`SearchReviews should render correctly 1`] = `
 <styled.span>
-   Search Reviews  
+  <styled.input
+    placeholder="Search reviews"
+  />
 </styled.span>
 `;
