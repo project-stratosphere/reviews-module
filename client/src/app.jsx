@@ -76,6 +76,7 @@ class App extends React.Component {
   handleSearchSubmit(event) {
     if (event.key === 'Enter') {
       console.log('test');
+      console.log('Search string is ', this.state.currentSearch);
     }
   }
 
@@ -85,6 +86,7 @@ class App extends React.Component {
         <AppInnerWrapper>
           <ContainerAverageStars
             averageStarsObj={this.state.averageStarsObj}
+            currentSearch={this.state.currentSearch}
             handleSearchChange={this.handleSearchChange}
             handleSearchSubmit={this.handleSearchSubmit}
           />

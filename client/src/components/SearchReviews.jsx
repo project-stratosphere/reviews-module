@@ -11,6 +11,7 @@ const SearchReviews = props => (
     <SearchField
       placeholder="Search reviews"
       type="text"
+      value={props.currentSearch}
       onChange={props.handleSearchChange}
       onKeyPress={props.handleSearchSubmit}
     />
@@ -20,11 +21,13 @@ const SearchReviews = props => (
 SearchReviews.propTypes = {
   handleSearchChange: PropTypes.func,
   handleSearchSubmit: PropTypes.func,
+  currentSearch: PropTypes.string,
 };
 
 SearchReviews.defaultProps = {
   handleSearchChange: () => {},
   handleSearchSubmit: () => {},
+  currentSearch: '',
 };
 
 export default SearchReviews;
