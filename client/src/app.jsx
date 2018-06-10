@@ -1,7 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-import processReviewsArray from './helpers/apphelpers';
+import {
+  processReviewsArray,
+  filterReviews,
+} from './helpers/apphelpers';
 
 import ContainerAverageStars from './components/ContainerAverageStars';
 import ContainerReviews from './components/ContainerReviews';
@@ -25,7 +28,8 @@ class App extends React.Component {
 
     this.state = {
       averageStarsObj: {},
-      reviews: [],
+      allReviews: [],
+      renderedReviews: [],
       currentSearch: '',
     };
   }
@@ -57,7 +61,8 @@ class App extends React.Component {
         // console.log(response.data);
         const data = processReviewsArray(response.data);
         this.setState({
-          reviews: data,
+          allReviews: data,
+          renderedReviews: data,
         });
       })
       .catch((error) => {
@@ -75,8 +80,16 @@ class App extends React.Component {
 
   handleSearchSubmit(event) {
     if (event.key === 'Enter') {
-      console.log('test');
-      console.log('Search string is ', this.state.currentSearch);
+      if (this.state.currentSearch) {
+        const filteredReviews = filterReviews(this.state.currentSearch, this.state.allReviews);
+        this.setState({
+          renderedReviews: filteredReviews,
+        });
+      } else {
+        this.setState({
+          renderedReviews: this.state.allReviews,
+        });
+      }
     }
   }
 
@@ -90,7 +103,7 @@ class App extends React.Component {
             handleSearchChange={this.handleSearchChange}
             handleSearchSubmit={this.handleSearchSubmit}
           />
-          <ContainerReviews reviews={this.state.reviews} />
+          <ContainerReviews reviews={this.state.renderedReviews} />
         </AppInnerWrapper>
       </AppOuterWrapper>
     );

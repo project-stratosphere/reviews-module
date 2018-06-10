@@ -6,6 +6,10 @@ exports[`SubcontainerAverageStarsHeader should render correctly 1`] = `
     numReviews={1}
     overallAvg={1}
   />
-  <SearchReviews />
+  <SearchReviews
+    currentSearch=""
+    handleSearchChange={[Function]}
+    handleSearchSubmit={[Function]}
+  />
 </styled.div>
 `;

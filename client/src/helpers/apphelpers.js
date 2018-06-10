@@ -15,13 +15,13 @@ const months = {
 
 const trimDateToYYYYMMDD = date => date.slice(0, 11);
 
-const convertDateToMonthYYYY = (trimmedDate) => {  
+const convertDateToMonthYYYY = (trimmedDate) => {
   const month = +trimmedDate.slice(5, 7);
   const year = trimmedDate.slice(0, 4);
   return `${months[month]} ${year}`;
 };
 
-const processReviewsArray = (reviewsArray) => {
+export const processReviewsArray = (reviewsArray) => {
   const reviewsArrayCopy = reviewsArray.slice();
   let counter = 0;
   reviewsArrayCopy.forEach((review) => {
@@ -32,4 +32,10 @@ const processReviewsArray = (reviewsArray) => {
   return reviewsArrayCopy;
 };
 
-export default processReviewsArray;
+export const filterReviews = (searchString, processedReviewsArray) => {
+  const compareString = searchString.toLowerCase();
+  return processedReviewsArray.filter((reviewObj) => {
+    return reviewObj.review_text.toLowerCase().includes(compareString);
+  });
+};
+

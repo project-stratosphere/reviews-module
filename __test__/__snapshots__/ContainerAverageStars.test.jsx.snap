@@ -4,6 +4,9 @@ exports[`ContainerAverageStars should render correctly 1`] = `
 <styled.div>
   <styled.span>
     <SubcontainerAverageStarsHeader
+      currentSearch=""
+      handleSearchChange={[Function]}
+      handleSearchSubmit={[Function]}
       numReviews={13}
       overallAvg={2.9}
     />
