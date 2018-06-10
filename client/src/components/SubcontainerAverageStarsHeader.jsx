@@ -4,26 +4,28 @@ import PropTypes from 'prop-types';
 import TotalReviews from './TotalReviews';
 import SearchReviews from './SearchReviews';
 
-import { Wrapper } from './styles/SubcontainerAverageStarsHeader.styles';
+import { SubContainerAverageStarsHeaderWrapper } from './styles/SubcontainerAverageStarsHeader.styles';
 
 const SubcontainerAverageStarsHeader = props => (
-  <Wrapper>
+  <SubContainerAverageStarsHeaderWrapper>
     <TotalReviews
       overallAvg={props.overallAvg}
       numReviews={props.numReviews}
     />
-    <SearchReviews />
-  </Wrapper>
+    <SearchReviews handleSearchChange={props.handleSearchChange} />
+  </SubContainerAverageStarsHeaderWrapper>
 );
 
 SubcontainerAverageStarsHeader.propTypes = {
   overallAvg: PropTypes.number,
   numReviews: PropTypes.number,
+  handleSearchChange: PropTypes.func,
 };
 
 SubcontainerAverageStarsHeader.defaultProps = {
   overallAvg: 1,
   numReviews: 1,
+  handleSearchChange: () => {},
 };
 
 export default SubcontainerAverageStarsHeader;

@@ -13,6 +13,7 @@ const ContainerAverageStars = props => (
       <SubcontainerAverageStarsHeader
         overallAvg={props.averageStarsObj.overallAvg}
         numReviews={props.averageStarsObj.numReviews}
+        handleSearchChange={props.handleSearchChange}
       />
     </WrapperAvgStars>
     <ReviewStarsByDescriptor
@@ -37,6 +38,7 @@ ContainerAverageStars.propTypes = {
     valueAvg: PropTypes.number,
     numReviews: PropTypes.number,
   }),
+  handleSearchChange: PropTypes.func,
 };
 
 ContainerAverageStars.defaultProps = {
@@ -50,6 +52,7 @@ ContainerAverageStars.defaultProps = {
     valueAvg: 1,
     numReviews: 1,
   },
+  handleSearchChange: () => {},
 };
 
 export default ContainerAverageStars;

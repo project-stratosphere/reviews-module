@@ -19,9 +19,13 @@ class App extends React.Component {
     this.getListingAverageStars = this.getListingAverageStars.bind(this);
     this.getListingReviews = this.getListingReviews.bind(this);
 
+    // Methods
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+
     this.state = {
       averageStarsObj: {},
       reviews: [],
+      currentSearch: '',
     };
   }
 
@@ -62,11 +66,21 @@ class App extends React.Component {
       });
   }
 
+  handleSearchChange(event) {
+    this.setState({
+      currentSearch: event.target.value,
+    });
+  }
+
   render() {
+    {console.log('re render?')}
     return (
       <AppOuterWrapper>
         <AppInnerWrapper>
-          <ContainerAverageStars averageStarsObj={this.state.averageStarsObj} />
+          <ContainerAverageStars
+            averageStarsObj={this.state.averageStarsObj}
+            handleSearchChange={this.handleSearchChange}
+          />
           <ContainerReviews reviews={this.state.reviews} />
         </AppInnerWrapper>
       </AppOuterWrapper>

@@ -8,7 +8,12 @@ import {
 
 const SearchReviews = props => (
   <SearchFieldWrapper>
-    <SearchField placeholder="Search reviews" />
+    {console.log(props)}
+    <SearchField 
+      placeholder="Search reviews" 
+      type="text" 
+      onChange={props.handleSearchChange}
+    />
   </SearchFieldWrapper>
 );
 
