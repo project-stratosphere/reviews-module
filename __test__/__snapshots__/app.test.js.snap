@@ -1,21 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App should render correctly 1`] = `
-<div>
-  <h1>
-     Top of App 
-  </h1>
-  <ContainerAverageStars
-    averageStarsObj={Object {}}
-  />
-  <h1>
-     Break! 
-  </h1>
-  <ContainerReviews
-    reviews={Array []}
-  />
-  <h1>
-     End Module 
-  </h1>
-</div>
+<styled.div>
+  <styled.div>
+    <ContainerAverageStars
+      averageStarsObj={Object {}}
+    />
+    <ContainerReviews
+      reviews={Array []}
+    />
+  </styled.div>
+</styled.div>
 `;

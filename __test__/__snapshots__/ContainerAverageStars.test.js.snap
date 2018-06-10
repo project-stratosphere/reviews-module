@@ -1,15 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContainerAverageStars should render correctly 1`] = `
-<div>
-  <h3>
-     Average Stars Container 
-  </h3>
-  <TotalReviews
-    numReviews={1}
-    overallAvg={1}
-  />
-  <SearchReviews />
+<styled.div>
+  <styled.span>
+    <SubcontainerAverageStarsHeader
+      numReviews={1}
+      overallAvg={1}
+    />
+  </styled.span>
   <ReviewStarsByDescriptor
     accuracyAvg={1}
     checkinAvg={1}
@@ -18,5 +16,5 @@ exports[`ContainerAverageStars should render correctly 1`] = `
     locationAvg={1}
     valueAvg={1}
   />
-</div>
+</styled.div>
 `;

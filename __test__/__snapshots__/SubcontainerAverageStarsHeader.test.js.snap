@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubcontainerAverageStarsHeader should render correctly 1`] = `
+<styled.div>
+  <TotalReviews
+    numReviews={1}
+    overallAvg={1}
+  />
+  <SearchReviews />
+</styled.div>
+`;

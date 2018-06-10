@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchReviews should render correctly 1`] = `
-<div>
-  <h6>
-     Search reviews 
-  </h6>
-</div>
+<styled.span>
+  <styled.input
+    placeholder="Search reviews"
+  />
+</styled.span>
 `;

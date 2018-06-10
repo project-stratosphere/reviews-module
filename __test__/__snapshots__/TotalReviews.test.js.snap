@@ -1,18 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TotalReviews should render correctly 1`] = `
-<div
-  id="review-overall-average"
->
-  <h6>
+<styled.span>
+  <styled.span>
      
     1
      Reviews 
-  </h6>
-  <h6>
-     
-    1
-     Star 
-  </h6>
-</div>
+  </styled.span>
+  <styled.span>
+    <StarsOverall
+      overallAvg={1}
+    />
+  </styled.span>
+</styled.span>
 `;

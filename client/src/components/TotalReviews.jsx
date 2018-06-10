@@ -1,11 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import StarsOverall from './StarsOverall';
+
+import {
+  Wrapper,
+  TotalReviewsTextWrapper,
+  StarsOverallWrapper,
+} from './styles/TotalReviews.styles';
+
 const TotalReviews = props => (
-  <div id="review-overall-average">
-    <h6> {props.numReviews} Reviews </h6>
-    <h6> {props.overallAvg} Star </h6>
-  </div>
+  <Wrapper>
+    <TotalReviewsTextWrapper> {props.numReviews} Reviews </TotalReviewsTextWrapper>
+    <StarsOverallWrapper>
+      <StarsOverall overallAvg={props.overallAvg} />
+    </StarsOverallWrapper>
+  </Wrapper>
 );
 
 TotalReviews.propTypes = {

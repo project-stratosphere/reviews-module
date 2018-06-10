@@ -1,15 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import StarsByDescriptor from './StarsByDescriptor';
+
+import {
+  Wrapper,
+  ColumnWrapper,
+  DescriptorWrapper,
+  DescriptorText,
+} from './styles/ReviewStarsByDescriptor.styles';
+
 const ReviewStarsByDescriptor = props => (
-  <div>
-    <h6> Accuracy {props.accuracyAvg} </h6>
-    <h6> Communication {props.communicationAvg} </h6>
-    <h6> Cleanliness {props.cleanlinessAvg} </h6>
-    <h6> Location {props.locationAvg} </h6>
-    <h6> Check-in {props.checkinAvg} </h6>
-    <h6> Value {props.valueAvg} </h6>
-  </div>
+  <Wrapper>
+    <ColumnWrapper>
+      <DescriptorWrapper>
+        <DescriptorText> Accuracy </DescriptorText>
+        <StarsByDescriptor avg={props.accuracyAvg} />
+      </DescriptorWrapper>
+      <DescriptorWrapper>
+        <DescriptorText> Communication </DescriptorText>
+        <StarsByDescriptor avg={props.communicationAvg} />
+      </DescriptorWrapper>
+      <DescriptorWrapper>
+        <DescriptorText> Cleanliness </DescriptorText>
+        <StarsByDescriptor avg={props.cleanlinessAvg} />
+      </DescriptorWrapper>
+    </ColumnWrapper>
+    <ColumnWrapper>
+      <DescriptorWrapper>
+        <DescriptorText> Location </DescriptorText>
+        <StarsByDescriptor avg={props.locationAvg} />
+      </DescriptorWrapper>
+      <DescriptorWrapper>
+        <DescriptorText> Check-in </DescriptorText>
+        <StarsByDescriptor avg={props.checkinAvg} />
+      </DescriptorWrapper>
+      <DescriptorWrapper>
+        <DescriptorText> Value </DescriptorText>
+        <StarsByDescriptor avg={props.valueAvg} />
+      </DescriptorWrapper>
+    </ColumnWrapper>
+  </Wrapper>
 );
 
 ReviewStarsByDescriptor.propTypes = {
