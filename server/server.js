@@ -3,10 +3,12 @@ const path = require('path');
 const dbQueries = require('./helpers/queries.js');
 const dataHandlers = require('./helpers/datahandlers.js');
 
+const port = process.env.PORT || 3004;
+
 const app = express();
 
-app.use('/', express.static(path.join(__dirname, '../public')));
-app.use('/', express.static(path.join(__dirname, '../client/dist')));
+app.use('/rooms/:id', express.static(path.join(__dirname, '../public')));
+app.use('/rooms/:id', express.static(path.join(__dirname, '../client/dist')));
 
 // Decided not to use a router, considering there are only two routes.
 // Here's a helpful reference though for the future (note to self):
@@ -34,8 +36,6 @@ app.get('/api/listings/:id/averagestars', (req, res) => {
       res.status(500).send(JSON.stringify(error));
     });
 });
-
-const port = 3004;
 
 app.listen(3004, () => console.log('App listening on port ', port));
 

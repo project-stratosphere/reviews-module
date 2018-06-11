@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import URL from 'url-parse';
 
 import { filterReviews } from './helpers/apphelpers';
 
@@ -14,6 +15,8 @@ import {
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.getListingID = this.getListingID.bind(this);
 
     // API calls
     this.getListingAverageStars = this.getListingAverageStars.bind(this);
@@ -32,9 +35,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // Using parameter 14 for now, just for testing
-    this.getListingReviews(14);
-    this.getListingAverageStars(14);
+    this.getListingReviews(this.getListingID());
+    this.getListingAverageStars(this.getListingID());
+  }
+
+  getListingID() {
+    const curURL = new URL(window.location.href);
+    return curURL.pathname.slice(7, -1);
   }
 
   getListingAverageStars(id) {
