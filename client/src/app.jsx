@@ -38,8 +38,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getListingReviews(this.getListingId());
-    this.getListingAverageStars(this.getListingId());
+    const id = this.getListingId();
+    this.getListingReviews(id);
+    this.getListingAverageStars(id);
   }
 
   getListingId() {
