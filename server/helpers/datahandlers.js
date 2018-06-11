@@ -41,6 +41,14 @@ module.exports.calcReviewsAverageStars = (averageStarsArray) => {
 // ------------
 // ------------
 
+module.exports.checkForValidRecord = (queryId, totalRecords) => {
+  return (queryId > 0 && queryId <= totalRecords) ? true : false;
+};
+
+// ------------
+// ------------
+// ------------
+
 const months = {
   1: 'January',
   2: 'February',

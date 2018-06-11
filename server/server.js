@@ -14,32 +14,40 @@ app.use('/rooms/:id', express.static(path.join(__dirname, '../client/dist')));
 // Here's a helpful reference though for the future (note to self):
 // https://medium.com/@jeffandersen/building-a-node-js-rest-api-with-express-46b0901f29b6
 app.get('/api/listings/:id/reviews', (req, res) => {
-  const listingID = req.params.id.replace(/\D/g, '');
+  const listingId = req.params.id.replace(/\D/g, '');
 
-  dbQueries.listingReviews.get(listingID)
-    .then((data) => {
-      const formattedReviews = dataHandlers.processReviewsArray(data);
-      res.status(200).send(JSON.stringify(formattedReviews));
-    })
-    .catch((error) => {
-      res.status(500).send(JSON.stringify(error));
-    });
+  if (dataHandlers.checkForValidRecord(listingId, dbQueries.listings.getTotal())) {
+    dbQueries.listingReviews.get(listingId)
+      .then((data) => {
+        const formattedReviews = dataHandlers.processReviewsArray(data);
+        res.status(200).send(JSON.stringify(formattedReviews));
+      })
+      .catch((error) => {
+        res.status(500).send(JSON.stringify(error));
+      });
+  } else {
+    res.sendStatus(404);
+  }
 });
 
 app.get('/api/listings/:id/averagestars', (req, res) => {
-  const listingID = req.params.id.replace(/\D/g, '');
-  
-  dbQueries.listingAverageStars.get(listingID)
-    .then((data) => {
-      const reviewStarsObj = dataHandlers.calcReviewsAverageStars(data);
-      res.status(200).send(JSON.stringify(reviewStarsObj));
-    })
-    .catch((error) => {
-      res.status(500).send(JSON.stringify(error));
-    });
+  const listingId = req.params.id.replace(/\D/g, '');
+
+  if (dataHandlers.checkForValidRecord(listingId, dbQueries.listings.getTotal())) {
+    dbQueries.listingAverageStars.get(listingId)
+      .then((data) => {
+        const reviewStarsObj = dataHandlers.calcReviewsAverageStars(data);
+        res.status(200).send(JSON.stringify(reviewStarsObj));
+      })
+      .catch((error) => {
+        res.status(500).send(JSON.stringify(error));
+      });
+  } else {
+    res.sendStatus(404);
+  }
 });
 
-app.get('*', function(req, res){
+app.get('*', (req, res) => {
   res.status(404).send('Sorry, that page was not found!  Try the following pathname: /rooms/{id}');
 });
 
