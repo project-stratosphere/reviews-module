@@ -1,10 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import {
-  processReviewsArray,
-  filterReviews,
-} from './helpers/apphelpers';
+import { filterReviews } from './helpers/apphelpers';
 
 import ContainerAverageStars from './components/ContainerAverageStars';
 import ContainerReviews from './components/ContainerReviews';
@@ -35,7 +32,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // Using parameter 1 for now, just for testing
+    // Using parameter 14 for now, just for testing
     this.getListingReviews(14);
     this.getListingAverageStars(14);
   }
@@ -43,7 +40,6 @@ class App extends React.Component {
   getListingAverageStars(id) {
     axios.get(`/api/listings/${id}/averagestars`)
       .then((response) => {
-        // console.log(response.data);
         this.setState({
           averageStarsObj: response.data,
         });
@@ -58,8 +54,7 @@ class App extends React.Component {
   getListingReviews(id) {
     axios.get(`/api/listings/${id}/reviews`)
       .then((response) => {
-        // console.log(response.data);
-        const data = processReviewsArray(response.data);
+        const { data } = response;
         this.setState({
           allReviews: data,
           renderedReviews: data,

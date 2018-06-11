@@ -15,7 +15,8 @@ app.get('/api/listings/:id/reviews', (req, res) => {
   const listingID = JSON.parse(req.params.id);
   dbQueries.listingReviews.get(listingID)
     .then((data) => {
-      res.status(200).send(JSON.stringify(data));
+      const test = dataHandlers.processReviewsArray(data);
+      res.status(200).send(JSON.stringify(test));
     })
     .catch((error) => {
       res.status(500).send(JSON.stringify(error));

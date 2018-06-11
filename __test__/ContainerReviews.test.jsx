@@ -9,22 +9,22 @@ import { processReviewsArray } from '../client/src/helpers/apphelpers';
 
 configure({ adapter: new Adapter() });
 
-const dummyReviews = [
+const processedDummyReviews = [
   {
-    review_date: '2017-02-12T08:00:00.000Z',
+    review_date: 'February 2017',
     review_text: 'Debitis sequi id nam optio iste molestias dolores dolorem ex.',
     first_name: 'Peggie',
     last_name: 'Oberbrunner',
+    key: 0,
   },
   {
-    review_date: '2016-10-19T07:00:00.000Z',
+    review_date: 'October 2016',
     review_text: 'Dolore doloribus eius numquam sunt sapiente quos officia quod nulla.',
     first_name: 'Jasmin',
     last_name: 'Schmidt',
+    key: 1,
   },
 ];
-
-const processedDummyReviews = processReviewsArray(dummyReviews);
 
 describe('ContainerReviews', () => {
   it('should render correctly', () => {
