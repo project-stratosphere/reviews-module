@@ -12,11 +12,13 @@ import {
   AppInnerWrapper,
 } from './App.styles';
 
+import { BasicTextFormatSpan } from './components/styles/MasterStyles.styles';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.getListingID = this.getListingID.bind(this);
+    this.getListingId = this.getListingId.bind(this);
 
     // API calls
     this.getListingAverageStars = this.getListingAverageStars.bind(this);
@@ -31,15 +33,16 @@ class App extends React.Component {
       allReviews: [],
       renderedReviews: [],
       currentSearch: '',
+      err404: false,
     };
   }
 
   componentDidMount() {
-    this.getListingReviews(this.getListingID());
-    this.getListingAverageStars(this.getListingID());
+    this.getListingReviews(this.getListingId());
+    this.getListingAverageStars(this.getListingId());
   }
 
-  getListingID() {
+  getListingId() {
     const curURL = new URL(window.location.href);
     return curURL.pathname.slice(7, -1);
   }
@@ -52,9 +55,9 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
-        // Not finished! Will properly error handle in the future.
-
-        // console.log(error);
+        this.setState({
+          err404: true,
+        });
       });
   }
 
@@ -68,9 +71,9 @@ class App extends React.Component {
         });
       })
       .catch((error) => {
-        // Not finished! Will properly error handle in the future.
-
-        // console.log(error);
+        this.setState({
+          err404: true,
+        });
       });
   }
 
@@ -98,15 +101,23 @@ class App extends React.Component {
   render() {
     return (
       <AppOuterWrapper>
-        <AppInnerWrapper>
-          <ContainerAverageStars
-            averageStarsObj={this.state.averageStarsObj}
-            currentSearch={this.state.currentSearch}
-            handleSearchChange={this.handleSearchChange}
-            handleSearchSubmit={this.handleSearchSubmit}
-          />
-          <ContainerReviews reviews={this.state.renderedReviews} />
-        </AppInnerWrapper>
+        {this.state.err404 ?
+          (
+            <BasicTextFormatSpan>
+              <h1> Sorry, that listing does not exist </h1>
+            </BasicTextFormatSpan>
+          ) : (
+            <AppInnerWrapper>
+              <ContainerAverageStars
+                averageStarsObj={this.state.averageStarsObj}
+                currentSearch={this.state.currentSearch}
+                handleSearchChange={this.handleSearchChange}
+                handleSearchSubmit={this.handleSearchSubmit}
+              />
+              <ContainerReviews reviews={this.state.renderedReviews} />
+            </AppInnerWrapper>
+          )
+        }
       </AppOuterWrapper>
     );
   }
