@@ -3,7 +3,11 @@
 exports[`SearchReviews should render correctly 1`] = `
 <styled.span>
   <styled.input
+    onChange={[Function]}
+    onKeyPress={[Function]}
     placeholder="Search reviews"
+    type="text"
+    value="Diablo II"
   />
 </styled.span>
 `;

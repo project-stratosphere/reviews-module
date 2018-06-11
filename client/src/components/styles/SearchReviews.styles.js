@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { BasicWrapperFlexColumnSpan } from './MasterStyles.styles';
 
-export const Wrapper = styled.span`
-  display: flex;
-  flex-direction: column;
+
+export const SearchFieldWrapper = BasicWrapperFlexColumnSpan.extend`
   justify-content: center;
   align-items: flex-end;
   min-width: 325px;

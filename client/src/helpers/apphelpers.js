@@ -1,3 +1,20 @@
+export const filterReviews = (searchString, processedReviewsArray) => {
+  const compareString = searchString.toLowerCase();
+  return processedReviewsArray.filter((reviewObj) => {
+    return reviewObj.review_text.toLowerCase().includes(compareString);
+  });
+};
+
+// -----------------
+// -----------------
+// -----------------
+
+// Note:
+// I used the below formulas/objects when I was handling data reformatting on the client side
+// But I then decided to do formatting on the server side.
+// However, I'm leaving this here just in case I revisit that decision in the future.
+
+/*
 const months = {
   1: 'January',
   2: 'February',
@@ -15,13 +32,13 @@ const months = {
 
 const trimDateToYYYYMMDD = date => date.slice(0, 11);
 
-const convertDateToMonthYYYY = (trimmedDate) => {  
+const convertDateToMonthYYYY = (trimmedDate) => {
   const month = +trimmedDate.slice(5, 7);
   const year = trimmedDate.slice(0, 4);
   return `${months[month]} ${year}`;
 };
 
-const processReviewsArray = (reviewsArray) => {
+export const processReviewsArray = (reviewsArray) => {
   const reviewsArrayCopy = reviewsArray.slice();
   let counter = 0;
   reviewsArrayCopy.forEach((review) => {
@@ -31,5 +48,4 @@ const processReviewsArray = (reviewsArray) => {
   });
   return reviewsArrayCopy;
 };
-
-export default processReviewsArray;
+*/

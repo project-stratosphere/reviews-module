@@ -4,43 +4,43 @@ import PropTypes from 'prop-types';
 import StarsByDescriptor from './StarsByDescriptor';
 
 import {
-  Wrapper,
-  ColumnWrapper,
-  DescriptorWrapper,
-  DescriptorText,
+  ReviewStarsDescriptorWrapper,
+  ReviewStarsDescriptorColumnWrapper,
+  ReviewStarsDescriptorItemWrapper,
+  ReviewStarsDescriptorTextWrapper,
 } from './styles/ReviewStarsByDescriptor.styles';
 
 const ReviewStarsByDescriptor = props => (
-  <Wrapper>
-    <ColumnWrapper>
-      <DescriptorWrapper>
-        <DescriptorText> Accuracy </DescriptorText>
+  <ReviewStarsDescriptorWrapper>
+    <ReviewStarsDescriptorColumnWrapper>
+      <ReviewStarsDescriptorItemWrapper>
+        <ReviewStarsDescriptorTextWrapper> Accuracy </ReviewStarsDescriptorTextWrapper>
         <StarsByDescriptor avg={props.accuracyAvg} />
-      </DescriptorWrapper>
-      <DescriptorWrapper>
-        <DescriptorText> Communication </DescriptorText>
+      </ReviewStarsDescriptorItemWrapper>
+      <ReviewStarsDescriptorItemWrapper>
+        <ReviewStarsDescriptorTextWrapper> Communication </ReviewStarsDescriptorTextWrapper>
         <StarsByDescriptor avg={props.communicationAvg} />
-      </DescriptorWrapper>
-      <DescriptorWrapper>
-        <DescriptorText> Cleanliness </DescriptorText>
+      </ReviewStarsDescriptorItemWrapper>
+      <ReviewStarsDescriptorItemWrapper>
+        <ReviewStarsDescriptorTextWrapper> Cleanliness </ReviewStarsDescriptorTextWrapper>
         <StarsByDescriptor avg={props.cleanlinessAvg} />
-      </DescriptorWrapper>
-    </ColumnWrapper>
-    <ColumnWrapper>
-      <DescriptorWrapper>
-        <DescriptorText> Location </DescriptorText>
+      </ReviewStarsDescriptorItemWrapper>
+    </ReviewStarsDescriptorColumnWrapper>
+    <ReviewStarsDescriptorColumnWrapper>
+      <ReviewStarsDescriptorItemWrapper>
+        <ReviewStarsDescriptorTextWrapper> Location </ReviewStarsDescriptorTextWrapper>
         <StarsByDescriptor avg={props.locationAvg} />
-      </DescriptorWrapper>
-      <DescriptorWrapper>
-        <DescriptorText> Check-in </DescriptorText>
+      </ReviewStarsDescriptorItemWrapper>
+      <ReviewStarsDescriptorItemWrapper>
+        <ReviewStarsDescriptorTextWrapper> Check-in </ReviewStarsDescriptorTextWrapper>
         <StarsByDescriptor avg={props.checkinAvg} />
-      </DescriptorWrapper>
-      <DescriptorWrapper>
-        <DescriptorText> Value </DescriptorText>
+      </ReviewStarsDescriptorItemWrapper>
+      <ReviewStarsDescriptorItemWrapper>
+        <ReviewStarsDescriptorTextWrapper> Value </ReviewStarsDescriptorTextWrapper>
         <StarsByDescriptor avg={props.valueAvg} />
-      </DescriptorWrapper>
-    </ColumnWrapper>
-  </Wrapper>
+      </ReviewStarsDescriptorItemWrapper>
+    </ReviewStarsDescriptorColumnWrapper>
+  </ReviewStarsDescriptorWrapper>
 );
 
 ReviewStarsByDescriptor.propTypes = {

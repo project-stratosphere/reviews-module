@@ -5,6 +5,9 @@ exports[`App should render correctly 1`] = `
   <styled.div>
     <ContainerAverageStars
       averageStarsObj={Object {}}
+      currentSearch=""
+      handleSearchChange={[Function]}
+      handleSearchSubmit={[Function]}
     />
     <ContainerReviews
       reviews={Array []}

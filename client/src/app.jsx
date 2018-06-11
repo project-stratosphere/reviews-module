@@ -1,75 +1,124 @@
 import React from 'react';
 import axios from 'axios';
+import URL from 'url-parse';
 
-import processReviewsArray from './helpers/apphelpers';
+import { filterReviews } from './helpers/apphelpers';
 
 import ContainerAverageStars from './components/ContainerAverageStars';
 import ContainerReviews from './components/ContainerReviews';
 
 import {
-  OuterWrapper,
-  InnerWrapper,
+  AppOuterWrapper,
+  AppInnerWrapper,
 } from './App.styles';
+
+import { BasicTextFormatSpan } from './components/styles/MasterStyles.styles';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.getListingId = this.getListingId.bind(this);
+
     // API calls
     this.getListingAverageStars = this.getListingAverageStars.bind(this);
     this.getListingReviews = this.getListingReviews.bind(this);
 
+    // Methods
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+
     this.state = {
       averageStarsObj: {},
-      reviews: [],
+      allReviews: [],
+      renderedReviews: [],
+      currentSearch: '',
+      err404: false,
     };
   }
 
   componentDidMount() {
-    // Using parameter 1 for now, just for testing
-    this.getListingReviews(14);
-    this.getListingAverageStars(14);
+    this.getListingReviews(this.getListingId());
+    this.getListingAverageStars(this.getListingId());
+  }
+
+  getListingId() {
+    const curURL = new URL(window.location.href);
+    return curURL.pathname.slice(7, -1);
   }
 
   getListingAverageStars(id) {
     axios.get(`/api/listings/${id}/averagestars`)
       .then((response) => {
-        // console.log(response.data);
         this.setState({
           averageStarsObj: response.data,
         });
       })
       .catch((error) => {
-        // Not finished! Will properly error handle in the future.
-
-        // console.log(error);
+        this.setState({
+          err404: true,
+        });
       });
   }
 
   getListingReviews(id) {
     axios.get(`/api/listings/${id}/reviews`)
       .then((response) => {
-        // console.log(response.data);
-        const data = processReviewsArray(response.data);
+        const { data } = response;
         this.setState({
-          reviews: data,
+          allReviews: data,
+          renderedReviews: data,
         });
       })
       .catch((error) => {
-        // Not finished! Will properly error handle in the future.
-
-        // console.log(error);
+        this.setState({
+          err404: true,
+        });
       });
+  }
+
+  handleSearchChange(event) {
+    this.setState({
+      currentSearch: event.target.value,
+    });
+  }
+
+  handleSearchSubmit(event) {
+    if (event.key === 'Enter') {
+      if (this.state.currentSearch) {
+        const filteredReviews = filterReviews(this.state.currentSearch, this.state.allReviews);
+        this.setState({
+          renderedReviews: filteredReviews,
+        });
+      } else {
+        this.setState({
+          renderedReviews: this.state.allReviews,
+        });
+      }
+    }
   }
 
   render() {
     return (
-      <OuterWrapper>
-        <InnerWrapper>
-          <ContainerAverageStars averageStarsObj={this.state.averageStarsObj} />
-          <ContainerReviews reviews={this.state.reviews} />
-        </InnerWrapper>
-      </OuterWrapper>
+      <AppOuterWrapper>
+        {this.state.err404 ?
+          (
+            <BasicTextFormatSpan>
+              <h1> Sorry, that listing does not exist </h1>
+            </BasicTextFormatSpan>
+          ) : (
+            <AppInnerWrapper>
+              <ContainerAverageStars
+                averageStarsObj={this.state.averageStarsObj}
+                currentSearch={this.state.currentSearch}
+                handleSearchChange={this.handleSearchChange}
+                handleSearchSubmit={this.handleSearchSubmit}
+              />
+              <ContainerReviews reviews={this.state.renderedReviews} />
+            </AppInnerWrapper>
+          )
+        }
+      </AppOuterWrapper>
     );
   }
 }

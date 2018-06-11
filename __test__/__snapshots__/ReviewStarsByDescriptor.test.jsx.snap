@@ -7,20 +7,16 @@ exports[`ReviewStarsByDescriptor should render correctly 1`] = `
       <styled.span>
          Accuracy 
       </styled.span>
-      <styled.span>
-         
-        <StarsByDescriptor
-          avg={1}
-        />
-         
-      </styled.span>
+      <StarsByDescriptor
+        avg={2.4}
+      />
     </styled.div>
     <styled.div>
       <styled.span>
          Communication 
       </styled.span>
       <StarsByDescriptor
-        avg={1}
+        avg={1.8}
       />
     </styled.div>
     <styled.div>
@@ -28,7 +24,7 @@ exports[`ReviewStarsByDescriptor should render correctly 1`] = `
          Cleanliness 
       </styled.span>
       <StarsByDescriptor
-        avg={1}
+        avg={2.3}
       />
     </styled.div>
   </styled.div>
@@ -38,7 +34,7 @@ exports[`ReviewStarsByDescriptor should render correctly 1`] = `
          Location 
       </styled.span>
       <StarsByDescriptor
-        avg={1}
+        avg={4.4}
       />
     </styled.div>
     <styled.div>
@@ -46,7 +42,7 @@ exports[`ReviewStarsByDescriptor should render correctly 1`] = `
          Check-in 
       </styled.span>
       <StarsByDescriptor
-        avg={1}
+        avg={1.1}
       />
     </styled.div>
     <styled.div>
@@ -54,7 +50,7 @@ exports[`ReviewStarsByDescriptor should render correctly 1`] = `
          Value 
       </styled.span>
       <StarsByDescriptor
-        avg={1}
+        avg={3}
       />
     </styled.div>
   </styled.div>

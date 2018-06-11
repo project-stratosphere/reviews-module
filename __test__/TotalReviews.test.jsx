@@ -3,13 +3,22 @@ import { configure, shallow } from 'enzyme';
 import { shallowToJson } from 'enzyme-to-json';
 import Adapter from 'enzyme-adapter-react-16';
 
-import SearchReviews from '../client/src/components/SearchReviews';
+import TotalReviews from '../client/src/components/TotalReviews';
 
 configure({ adapter: new Adapter() });
 
-describe('SearchReviews', () => {
+const dummyProps = {
+  overallAvg: 2.4,
+  numReviews: 18,
+};
+
+describe('TotalReviews', () => {
   it('should render correctly', () => {
-    const output = shallow(<SearchReviews />);
+    const output = shallow(<TotalReviews
+      overallAvg={dummyProps.overallAvg}
+      numReviews={dummyProps.numReviews}
+    />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });
+

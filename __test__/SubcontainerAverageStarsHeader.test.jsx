@@ -7,9 +7,19 @@ import SubcontainerAverageStarsHeader from '../client/src/components/Subcontaine
 
 configure({ adapter: new Adapter() });
 
+const dummyProps = {
+  overallAvg: 3.4,
+  numReviews: 18,
+  currentSearch: 'pineapples',
+};
+
 describe('SubcontainerAverageStarsHeader', () => {
   it('should render correctly', () => {
-    const output = shallow(<SubcontainerAverageStarsHeader />);
+    const output = shallow(<SubcontainerAverageStarsHeader
+      overallAvg={dummyProps.overallAvg}
+      numReviews={dummyProps.numReviews}
+      currentSearch={dummyProps.currentSearch}
+    />);
     expect(shallowToJson(output)).toMatchSnapshot();
   });
 });

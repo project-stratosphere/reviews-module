@@ -4,17 +4,18 @@ import PropTypes from 'prop-types';
 import SubcontainerAverageStarsHeader from './SubcontainerAverageStarsHeader';
 import ReviewStarsByDescriptor from './ReviewStarsByDescriptor';
 
-import {
-  Wrapper,
-  WrapperAvgStars,
-} from './styles/ContainerAverageStars.styles';
+import { BasicWrapperFlexColumnDiv } from './styles/MasterStyles.styles';
+import { WrapperAvgStars } from './styles/ContainerAverageStars.styles';
 
 const ContainerAverageStars = props => (
-  <Wrapper>
+  <BasicWrapperFlexColumnDiv>
     <WrapperAvgStars>
       <SubcontainerAverageStarsHeader
         overallAvg={props.averageStarsObj.overallAvg}
         numReviews={props.averageStarsObj.numReviews}
+        handleSearchChange={props.handleSearchChange}
+        handleSearchSubmit={props.handleSearchSubmit}
+        currentSearch={props.currentSearch}
       />
     </WrapperAvgStars>
     <ReviewStarsByDescriptor
@@ -25,7 +26,7 @@ const ContainerAverageStars = props => (
       checkinAvg={props.averageStarsObj.checkinAvg}
       valueAvg={props.averageStarsObj.valueAvg}
     />
-  </Wrapper>
+  </BasicWrapperFlexColumnDiv>
 );
 
 ContainerAverageStars.propTypes = {
@@ -39,6 +40,9 @@ ContainerAverageStars.propTypes = {
     valueAvg: PropTypes.number,
     numReviews: PropTypes.number,
   }),
+  handleSearchChange: PropTypes.func,
+  handleSearchSubmit: PropTypes.func,
+  currentSearch: PropTypes.string,
 };
 
 ContainerAverageStars.defaultProps = {
@@ -52,6 +56,9 @@ ContainerAverageStars.defaultProps = {
     valueAvg: 1,
     numReviews: 1,
   },
+  handleSearchChange: () => {},
+  handleSearchSubmit: () => {},
+  currentSearch: '',
 };
 
 export default ContainerAverageStars;

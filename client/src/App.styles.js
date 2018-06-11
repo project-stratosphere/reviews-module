@@ -1,12 +1,11 @@
 import styled from 'styled-components';
+import { BasicWrapperFlexColumnDiv } from './components/styles/MasterStyles.styles';
 
-export const OuterWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+export const AppOuterWrapper = BasicWrapperFlexColumnDiv.extend`
   align-items: center;
 `;
 
-export const InnerWrapper = styled.div`
+export const AppInnerWrapper = styled.div`
   max-width: 650px;
 `;
 
