@@ -8,8 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "postinstall" : "webpack && npm run build && npm run start && npm run load-data",
-    "build": "webpack --mode development --watch",
+    "deploy" : "webpack && npm run build && npm run start && npm run load-data",
+    "build": "webpack",
     "build-dev": "webpack --mode development --watch",
     "start": "node server/server.js",
     "start-dev": "nodemon server/server.js",
