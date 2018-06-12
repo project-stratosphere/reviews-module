@@ -8,10 +8,13 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js --mode development --watch",
-    "start": "nodemon server/server.js",
+    "postinstall" : "webpack && npm run build && npm run start && npm run load-data",
+    "build": "webpack --mode development --watch",
+    "build-dev": "webpack --mode development --watch",
+    "start": "node server/server.js",
+    "start-dev": "nodemon server/server.js",
     "load-data": "mysql -u root --local-infile < database/schema.sql",
-    "test": "jest --coverage"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.18.0",
