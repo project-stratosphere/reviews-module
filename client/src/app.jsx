@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import URL from 'url-parse';
 
 import { filterReviews } from './helpers/apphelpers';
 
@@ -38,17 +37,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getListingReviews(this.getListingId());
-    this.getListingAverageStars(this.getListingId());
+    const id = this.getListingId();
+    this.getListingReviews(id);
+    this.getListingAverageStars(id);
   }
 
   getListingId() {
-    const curURL = new URL(window.location.href);
-    return curURL.pathname.slice(7, -1);
+    return window.location.pathname.slice(7, -1);
   }
 
   getListingAverageStars(id) {
-    axios.get(`/api/listings/${id}/averagestars`)
+    axios.get(`http://localhost:3004/api/listings/${id}/averagestars`)
       .then((response) => {
         this.setState({
           averageStarsObj: response.data,
@@ -62,7 +61,7 @@ class App extends React.Component {
   }
 
   getListingReviews(id) {
-    axios.get(`/api/listings/${id}/reviews`)
+    axios.get(`http://localhost:3004/api/listings/${id}/reviews`)
       .then((response) => {
         const { data } = response;
         this.setState({

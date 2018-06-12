@@ -1,11 +1,17 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
+
 const dbQueries = require('./helpers/queries.js');
 const dataHandlers = require('./helpers/datahandlers.js');
 
 const port = process.env.PORT || 3004;
 
 const app = express();
+
+// Allowing all cross origin requests for simplicity, given this is a controlled environment.
+// Would not do this in a deployment environment.
+app.use(cors());
 
 app.use('/rooms/:id', express.static(path.join(__dirname, '../public')));
 app.use('/rooms/:id', express.static(path.join(__dirname, '../client/dist')));

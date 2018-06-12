@@ -37,8 +37,8 @@ ALTER TABLE review ADD FOREIGN KEY (user_id) REFERENCES user (user_id);
 
 -- for reference: https://dev.mysql.com/doc/refman/5.7/en/load-data.html
 -- take a look at the paragraphs that describe the LOCAL keyword 
-LOAD DATA LOCAL INFILE 'data/userdata.txt' into table user;
-LOAD DATA LOCAL INFILE 'data/reviewdata.txt' into table review;
+LOAD DATA LOCAL INFILE 'database/data/userdata.txt' into table user;
+LOAD DATA LOCAL INFILE 'database/data/reviewdata.txt' into table review;
 
 
 
