@@ -11,7 +11,7 @@
     "build": "webpack --config webpack.config.js --mode development --watch",
     "start": "nodemon server/server.js",
     "load-data": "mysql -u root --local-infile < database/schema.sql",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -21,6 +21,7 @@
     "babel-preset-react": "^6.24.1",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "css-loader": "^0.28.11",
     "express": "^4.16.3",
     "mysql": "^2.15.0",
