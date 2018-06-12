@@ -22,6 +22,6 @@ module.exports = {
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
     path: bundlePath,
-    filename: 'bundle.js',
+    filename: 'reviewsBundle.js',
   }
 };
