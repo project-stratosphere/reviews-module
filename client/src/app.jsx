@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import URL from 'url-parse';
 
 import { filterReviews } from './helpers/apphelpers';
 
@@ -44,8 +43,7 @@ class App extends React.Component {
   }
 
   getListingId() {
-    const curURL = new URL(window.location.href);
-    return curURL.pathname.slice(7, -1);
+    return window.location.pathname.slice(7, -1);
   }
 
   getListingAverageStars(id) {
