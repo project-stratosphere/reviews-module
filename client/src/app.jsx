@@ -47,7 +47,7 @@ class App extends React.Component {
   }
 
   getListingAverageStars(id) {
-    axios.get(`http://localhost:3004/api/listings/${id}/averagestars`)
+    axios.get(`/api/listings/${id}/averagestars`)
       .then((response) => {
         this.setState({
           averageStarsObj: response.data,
@@ -61,7 +61,7 @@ class App extends React.Component {
   }
 
   getListingReviews(id) {
-    axios.get(`http://localhost:3004/api/listings/${id}/reviews`)
+    axios.get(`/api/listings/${id}/reviews`)
       .then((response) => {
         const { data } = response;
         this.setState({
