@@ -20,7 +20,13 @@ These are the other modules my group members produced:
 
 ## Usage
 
-> Some usage instructions
+> Before starting:
+Make sure your local instance of MySQL is *not* version 8 or later.  Should be version ~5.7.22.
+Make sure your local instance of MySQL has local-infile set to ON.
+
+> Getting up and running:
+Run: npm install
+Run: npm deploy 
 
 ## Requirements
 
