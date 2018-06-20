@@ -41,6 +41,15 @@ module.exports.listingReviews = {
   },
 };
 
+module.exports.addReview = {
+  post: (reviewObj) => {
+    return new Promise((resolve, reject) => {
+      let insertReviewBody = `insert into (`
+    }
+  }
+
+}
+
 module.exports.listings = {
   getTotal: () => {
     // Hard-coded to 100 because I don't have actual listings in my database, just references to listings.

@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
-const dbQueries = require('./helpers/queries.js');
+const query = require('./helpers/queries.js');
 const dataHandlers = require('./helpers/datahandlers.js');
 
 const port = process.env.PORT || 3004;
@@ -22,8 +22,25 @@ app.use('/rooms/:id', express.static(path.join(__dirname, '../client/dist')));
 app.get('/api/listings/:id/reviews', (req, res) => {
   const listingId = req.params.id.replace(/\D/g, '');
 
-  if (dataHandlers.checkForValidRecord(listingId, dbQueries.listings.getTotal())) {
-    dbQueries.listingReviews.get(listingId)
+  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
+    query.listingReviews.get(listingId)
+      .then((data) => {
+        const formattedReviews = dataHandlers.processReviewsArray(data);
+        res.status(200).send(JSON.stringify(formattedReviews));
+      })
+      .catch((error) => {
+        res.status(500).send(JSON.stringify(error));
+      });
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+app.post('/api/listings/:id/reviews', (req, res) => {
+  const listingId = req.params.id.replace(/\D/g, '');
+
+  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
+    query.listingReviews.get(listingId)
       .then((data) => {
         const formattedReviews = dataHandlers.processReviewsArray(data);
         res.status(200).send(JSON.stringify(formattedReviews));
@@ -39,8 +56,8 @@ app.get('/api/listings/:id/reviews', (req, res) => {
 app.get('/api/listings/:id/averagestars', (req, res) => {
   const listingId = req.params.id.replace(/\D/g, '');
 
-  if (dataHandlers.checkForValidRecord(listingId, dbQueries.listings.getTotal())) {
-    dbQueries.listingAverageStars.get(listingId)
+  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
+    query.listingAverageStars.get(listingId)
       .then((data) => {
         const reviewStarsObj = dataHandlers.calcReviewsAverageStars(data);
         res.status(200).send(JSON.stringify(reviewStarsObj));

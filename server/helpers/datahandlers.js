@@ -22,8 +22,7 @@ module.exports.calcReviewsAverageStars = (averageStarsArray) => {
   const locationAvg = +(locationTot / numReviews).toFixed(2);
   const checkinAvg = +(checkinTot / numReviews).toFixed(2);
   const valueAvg = +(valueTot / numReviews).toFixed(2);
-  const overallAvg = +((accuracyAvg + communicationAvg + cleanlinessAvg + locationAvg + checkinAvg + valueAvg) / 6)
-    .toFixed(2);
+  const overallAvg = +((accuracyAvg + communicationAvg + cleanlinessAvg + locationAvg + checkinAvg + valueAvg) / 6).toFixed(2);
 
   return {
     overallAvg,

@@ -8,7 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "deploy" : "npm run load-data && npm run build & npm run start",
+    "deploy": "npm run load-data && npm run build & npm run start",
     "build": "webpack",
     "build-dev": "webpack --mode development --watch",
     "start": "node server/server.js",
