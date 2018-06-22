@@ -1,7 +1,7 @@
 const fs = require('fs');
 const faker = require('faker');
 
-const writeListings = fs.createWriteStream('listingIds.csv', {
+const writeListings = fs.createWriteStream('seed/listingIds.csv', {
   flags: 'a',
 });
 
