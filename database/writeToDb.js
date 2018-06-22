@@ -1,4 +1,5 @@
 const { Pool, Client } = require('pg');
+const path = require('path');
 
 const conObject = {
   user: 'jonathanpizzolato',
@@ -6,37 +7,19 @@ const conObject = {
   database: 'dev_airbnb_sdc',
   password: 'devadmin',
   port: 5432,
-}
+};
 
+const filePath = path.resolve(__dirname, 'seed/users.csv');
 const pool = new Pool(conObject);
-const text = 'INSERT INTO temp_test(a_name,a_number) VALUES($1, $2) RETURNING *';
-const values = ['jonp', 1];
+const sql = `COPY tbl_users (first_name, last_name, user_name)  FROM '${filePath}' WITH DELIMITER '|' CSV HEADER;`;
+// const values;
 
-
-// this uses only one pool
-(async () => {
-  const { rows } = await pool.query(text, values);
-  console.log('user:', rows[0]);
-})().catch(e => setImmediate(() => { throw e; }));
-
-// can open multiple pools like this.
-let name = 'jonp';
-let number = 99;
-
+console.time('writeToDb');
 (async () => {
   const client = await pool.connect();
   try {
-    const res = await client.query(`INSERT INTO temp_test(a_name,a_number) VALUES('${name}', ${number}) RETURNING *`)
-    console.log(res.rows[0]);
-  } finally {
-    client.release();
-  }
-})().catch(e => console.log(e.stack));
-
-(async () => {
-  const client = await pool.connect();
-  try {
-    const res = await client.query(`INSERT INTO temp_test(a_name,a_number) VALUES('${name}', ${number}) RETURNING *`)
+    const res = await client.query(sql);
+    console.timeEnd('writeToDb');
     console.log(res.rows[0]);
   } finally {
     client.release();
