@@ -36,11 +36,48 @@ app.get('/api/listings/:id/reviews', (req, res) => {
   }
 });
 
-app.post('/api/listings/:id/reviews', (req, res) => {
+app.post('/api/listings/:id/reviews/new', (req, res) => {
   const listingId = req.params.id.replace(/\D/g, '');
+  const review = req.data;
 
   if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
-    query.listingReviews.get(listingId)
+    query.listingReviews.post(review)
+      .then((data) => {
+        const formattedReviews = dataHandlers.processReviewsArray(data);
+        res.status(200).send(JSON.stringify(formattedReviews));
+      })
+      .catch((error) => {
+        res.status(500).send(JSON.stringify(error));
+      });
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+app.put('/api/listings/:id/reviews/edit', (req, res) => {
+  const listingId = req.params.id.replace(/\D/g, '');
+  const review = req.data;
+
+  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
+    query.listingReviews.put(review)
+      .then((data) => {
+        const formattedReviews = dataHandlers.processReviewsArray(data);
+        res.status(200).send(JSON.stringify(formattedReviews));
+      })
+      .catch((error) => {
+        res.status(500).send(JSON.stringify(error));
+      });
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+app.delete('/api/listings/:id/reviews/remove', (req, res) => {
+  const listingId = req.params.id.replace(/\D/g, '');
+  const review = req.data;
+
+  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
+    query.listingReviews.delete(review)
       .then((data) => {
         const formattedReviews = dataHandlers.processReviewsArray(data);
         res.status(200).send(JSON.stringify(formattedReviews));
@@ -60,6 +97,7 @@ app.get('/api/listings/:id/averagestars', (req, res) => {
     query.listingAverageStars.get(listingId)
       .then((data) => {
         const reviewStarsObj = dataHandlers.calcReviewsAverageStars(data);
+        console.log('rso-----------', reviewStarsObj)
         res.status(200).send(JSON.stringify(reviewStarsObj));
       })
       .catch((error) => {

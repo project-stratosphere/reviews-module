@@ -8,11 +8,11 @@ module.exports.listingAverageStars = {
       // Using prepared statements to protect against SQL Injection Attacks
       // See here: https://dev.mysql.com/doc/refman/5.7/en/sql-syntax-prepared-statements.html
       // And here: https://github.com/mysqljs/mysql#preparing-queries
-      let starsQuery = 'SELECT rank_accuracy, rank_communication, rank_cleanliness, rank_location, rank_checkin, rank_value FROM ?? WHERE ?? = ?';
-      const inserts = ['review', 'listing_id', listingId];
-      starsQuery = mysql.format(starsQuery, inserts);
+      let sql = 'SELECT AVG(rank_accuracy) as rank_accuracy, AVG(rank_communication) as rank_communication, AVG(rank_cleanliness) as rank_cleanliness, AVG(rank_location) as rank_location, AVG(rank_checkin) as rank_checkin, AVG(rank_value) as rank_value FROM ?? WHERE ?? = ?';
+      const inserts = ['tbl_reviews', 'listing_id', listingId];
+      sql = mysql.format(sql, inserts);
 
-      db.dbConnection.query(starsQuery, (err, result) => {
+      db.dbConnection.query(sql, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -26,11 +26,65 @@ module.exports.listingAverageStars = {
 module.exports.listingReviews = {
   get: (listingId) => {
     return new Promise((resolve, reject) => {
-      let reviewsQuery = 'SELECT review_date, review_text, user.first_name, user.last_name FROM ?? INNER JOIN ?? ON ?? = ?? WHERE ?? = ?';
-      const inserts = ['review', 'user', 'user.user_id', 'review.user_id', 'listing_id', listingId];
-      reviewsQuery = mysql.format(reviewsQuery, inserts);
+      let sql = 'SELECT tbl_reviews.review_date, tbl_reviews.review_text, tbl_users.first_name, tbl_users.last_name FROM ?? INNER JOIN ?? ON ?? = ?? WHERE ?? = ?';
+      const inserts = ['tbl_reviews', 'tbl_users', 'tbl_users.id', 'tbl_reviews.user_id', 'tbl_reviews.listing_id', listingId];
+      sql = mysql.format(sql, inserts);
 
-      db.dbConnection.query(reviewsQuery, (err, result) => {
+      db.dbConnection.query(sql, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
+  post: (review) => {
+    return new Promise((resolve, reject) => {
+      let sql = 'INSERT INTO tbl_reviews (listing_id, user_id, review_date, review_text, rank_accuracy, rank_communication, rank_cleanliness, rank_location, rank_checkin, rank_value) VALES (??, ??, ??, ??, ??, ??, ??, ??, ??, ??)';
+      const listingId = review.listingId;
+      const userId = review.userId;
+      const reviewDate = review.reviewDate || new Date();
+      const reviewText = review.reviewText || '';
+      const rankAccuracy = review.rankAccuracy || 0;
+      const rankCommunication = review.rankCommunication || 0;
+      const rankCleanliness = review.rankCleanliness || 0;
+      const rankLocation = review.rankLocation || 0;
+      const rankCheckin = review.rankCheckin || 0;
+      const rankValue = review.rankValue || 0;
+      const inserts = [listingId, userId, reviewDate, reviewText, rankAccuracy, rankCommunication, rankCleanliness, rankLocation, rankCheckin, rankValue];
+      sql = mysql.format(sql, inserts);
+
+      db.dbConnection.query(sql, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
+  put: (review) => {
+    return new Promise((resolve, reject) => {
+      const sql = 'SELECT "UPDATE STATEMENT RAN";'; // Just putting in a dummy query in place of an update
+
+      db.dbConnection.query(sql, (err, result) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+  },
+  delete: (review) => {
+    return new Promise((resolve, reject) => {
+      let sql = 'DELETE FROM tbl_review WHERE id = ??;';
+      const reviewId = review.reviewId || null;
+      const inserts = [reviewId];
+      sql = mysql.format(sql, inserts);
+
+      db.dbConnection.query(sql, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -41,14 +95,6 @@ module.exports.listingReviews = {
   },
 };
 
-module.exports.addReview = {
-  post: (reviewObj) => {
-    return new Promise((resolve, reject) => {
-      let insertReviewBody = `insert into (`
-    }
-  }
-
-}
 
 module.exports.listings = {
   getTotal: () => {
