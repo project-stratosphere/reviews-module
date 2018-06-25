@@ -6,12 +6,25 @@ const writeReviews = fs.createWriteStream('seed/reviewComments.csv', {
 });
 
 const batch = 100000;
-const batches = 2000;
+const batches = 500;
 // populate 10K different review comments
 const reviews = { dates: [], comments: [] };
 for (let i = 0; i < 10000; i += 1) {
   reviews.dates.push(JSON.stringify(faker.date.between('2015-01-01', '2018-06-02')).slice(1, 11));
   reviews.comments.push(faker.fake('{{lorem.sentences}}'));
+}
+// populate 100K different users
+const users = {
+  id: [],
+  first_name: [],
+  last_name: [],
+  user_name: [],
+};
+for (let i = 1; i < 100001; i += 1) {
+  users.id.push(i);
+  users.first_name.push(faker.fake('{{name.firstName}}'));
+  users.last_name.push(faker.fake('{{name.lastName}}'));
+  users.user_name.push(faker.fake('{{internet.userName}}'));
 }
 
 let dataWriter = (writer, data, encoding, callback) => {
@@ -37,7 +50,7 @@ let dataWriter = (writer, data, encoding, callback) => {
 
 // initiate the first line
 // initiate the first line
-let headers = 'listing_id|user_id|review_date|review_text|rank_accuracy|rank_communication|rank_cleanliness|rank_location|rank_checkin|rank_value';
+let headers = 'listing_id|user_id|first_name|review_date|review_text|rank_accuracy|rank_communication|rank_cleanliness|rank_location|rank_checkin|rank_value';
 dataWriter(writeReviews, headers + '\n', 'utf-8', 1, (err) => {
   if (err) {
     throw err;
@@ -53,8 +66,10 @@ for (let i = 0; i < batches; i += 1) {
   let data = '';
   for (let j = 0; j < batch; j += 1) {
     let idx = Math.floor(Math.random() * 10000); // same number of rows in the reviews object
+    let idx2 = Math.floor(Math.random() * 100000);
     let listID = Math.ceil(Math.random() * 10000000); // same number of listing ids 1 indexed
-    let userID = Math.ceil(Math.random() * 60000000); // a guess as to the number of unique users
+    let userID = users.id[idx2];
+    let firstName = users.first_name[idx2];
     let date = reviews.dates[idx];
     let text = reviews.comments[idx];
     let accuracy = Math.ceil(Math.random() * 5);
@@ -64,7 +79,7 @@ for (let i = 0; i < batches; i += 1) {
     let checkin = Math.ceil(Math.random() * 5);
     let value = Math.ceil(Math.random() * 5);
 
-    data = data + listID + '|' + userID + '|' + date + '|' + text + '|' + accuracy + '|' + communication + '|' + cleanliness + '|' + location + '|' + checkin + '|' + value + '\n';
+    data = data + listID + '|' + userID + '|' + firstName + '|' + date + '|' + text + '|' + accuracy + '|' + communication + '|' + cleanliness + '|' + location + '|' + checkin + '|' + value + '\n';
   }
 
   dataWriter(writeReviews, data, 'utf-8', (err) => {

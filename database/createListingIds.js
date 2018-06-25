@@ -5,9 +5,8 @@ const writeListings = fs.createWriteStream('seed/listingIds.csv', {
   flags: 'a',
 });
 
-const x = 10000000;
 const batch = 100000;
-const batches = 2;
+const batches = 100;
 // populate 10K different names
 const names = [];
 for (let i = 0; i < 1000; i += 1) {
@@ -44,7 +43,7 @@ dataWriter(writeListings, name + '\n', 'utf-8', 1, (err) => {
 });
 
 console.time('listings');
-for (let i = 0; i < 100; i += 1) {
+for (let i = 0; i < batches; i += 1) {
   let data = '';
   for (let j = 0; j < batch; j += 1) {
     let idx = Math.floor(Math.random() * 1000);

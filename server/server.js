@@ -19,94 +19,66 @@ app.use('/rooms/:id', express.static(path.join(__dirname, '../client/dist')));
 // Decided not to use a router, considering there are only two routes.
 // Here's a helpful reference though for the future (note to self):
 // https://medium.com/@jeffandersen/building-a-node-js-rest-api-with-express-46b0901f29b6
+app.get('/api/listings/:id/averagestars', (req, res) => {
+  const listingId = req.params.id.replace(/\D/g, '');
+  query.listingAverageStars.get(listingId)
+    .then(({ rows }) => {
+      const reviewStarsObj = dataHandlers.calcReviewsAverageStars(rows);
+      res.status(200).send(JSON.stringify(reviewStarsObj));
+    })
+    .catch((error) => {
+      res.status(500).send(JSON.stringify(error));
+    });
+});
+
 app.get('/api/listings/:id/reviews', (req, res) => {
   const listingId = req.params.id.replace(/\D/g, '');
-
-  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
-    query.listingReviews.get(listingId)
-      .then((data) => {
-        const formattedReviews = dataHandlers.processReviewsArray(data);
-        res.status(200).send(JSON.stringify(formattedReviews));
-      })
-      .catch((error) => {
-        res.status(500).send(JSON.stringify(error));
-      });
-  } else {
-    res.sendStatus(404);
-  }
+  query.listingReviews.get(listingId)
+    .then(({ rows }) => {
+      const formattedReviews = dataHandlers.processReviewsArray(rows);
+      res.status(200).send(JSON.stringify(formattedReviews));
+    })
+    .catch((error) => {
+      res.status(500).send(JSON.stringify(error));
+    });
 });
 
 app.post('/api/listings/:id/reviews/new', (req, res) => {
-  const listingId = req.params.id.replace(/\D/g, '');
-  const review = req.data;
-
-  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
-    query.listingReviews.post(review)
-      .then((data) => {
-        const formattedReviews = dataHandlers.processReviewsArray(data);
-        res.status(200).send(JSON.stringify(formattedReviews));
-      })
-      .catch((error) => {
-        res.status(500).send(JSON.stringify(error));
-      });
-  } else {
-    res.sendStatus(404);
-  }
+  const review = req.data; // Listing data (IDs) will have to be part of the data
+  query.listingReviews.post(review)
+    .then(({ rows }) => {
+      const formattedReviews = dataHandlers.processReviewsArray(rows);
+      res.status(200).send(JSON.stringify(formattedReviews));
+    })
+    .catch((error) => {
+      res.status(500).send(JSON.stringify(error));
+    });
 });
 
 app.put('/api/listings/:id/reviews/edit', (req, res) => {
-  const listingId = req.params.id.replace(/\D/g, '');
   const review = req.data;
-
-  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
-    query.listingReviews.put(review)
-      .then((data) => {
-        const formattedReviews = dataHandlers.processReviewsArray(data);
-        res.status(200).send(JSON.stringify(formattedReviews));
-      })
-      .catch((error) => {
-        res.status(500).send(JSON.stringify(error));
-      });
-  } else {
-    res.sendStatus(404);
-  }
+  query.listingReviews.put(review)
+    .then(({ rows }) => {
+      const formattedReviews = dataHandlers.processReviewsArray(rows);
+      res.status(200).send(JSON.stringify(formattedReviews));
+    })
+    .catch((error) => {
+      res.status(500).send(JSON.stringify(error));
+    });
 });
 
 app.delete('/api/listings/:id/reviews/remove', (req, res) => {
-  const listingId = req.params.id.replace(/\D/g, '');
   const review = req.data;
-
-  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
-    query.listingReviews.delete(review)
-      .then((data) => {
-        const formattedReviews = dataHandlers.processReviewsArray(data);
-        res.status(200).send(JSON.stringify(formattedReviews));
-      })
-      .catch((error) => {
-        res.status(500).send(JSON.stringify(error));
-      });
-  } else {
-    res.sendStatus(404);
-  }
+  query.listingReviews.delete(review)
+    .then(({ rows }) => {
+      const formattedReviews = dataHandlers.processReviewsArray(rows);
+      res.status(200).send(JSON.stringify(formattedReviews));
+    })
+    .catch((error) => {
+      res.status(500).send(JSON.stringify(error));
+    });
 });
 
-app.get('/api/listings/:id/averagestars', (req, res) => {
-  const listingId = req.params.id.replace(/\D/g, '');
-
-  if (dataHandlers.checkForValidRecord(listingId, query.listings.getTotal())) {
-    query.listingAverageStars.get(listingId)
-      .then((data) => {
-        const reviewStarsObj = dataHandlers.calcReviewsAverageStars(data);
-        console.log('rso-----------', reviewStarsObj)
-        res.status(200).send(JSON.stringify(reviewStarsObj));
-      })
-      .catch((error) => {
-        res.status(500).send(JSON.stringify(error));
-      });
-  } else {
-    res.sendStatus(404);
-  }
-});
 
 app.get('*', (req, res) => {
   res.status(404).send('Sorry, that page was not found!  Try the following pathname: /rooms/{id}');
