@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 const dbConnection = mysql.createConnection({
   user: 'root',
-  database: 'airbnc_data',
+  database: 'dev_airbnb_sdc',
 });
 
 dbConnection.connect((err) => {
