@@ -40,9 +40,10 @@ module.exports.listingReviews = {
   },
   post: (review) => {
     return new Promise((resolve, reject) => {
-      let sql = 'INSERT INTO tbl_reviews (listing_id, user_id, review_date, review_text, rank_accuracy, rank_communication, rank_cleanliness, rank_location, rank_checkin, rank_value) VALES (??, ??, ??, ??, ??, ??, ??, ??, ??, ??)';
+      const sql = 'INSERT INTO tbl_reviews (listing_id, user_id, first_name, review_date, review_text, rank_accuracy, rank_communication, rank_cleanliness, rank_location, rank_checkin, rank_value) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)';
       const listingId = review.listingId;
       const userId = review.userId;
+      const firstName = review.firstName || 'Anonymous';
       const reviewDate = review.reviewDate || new Date();
       const reviewText = review.reviewText || '';
       const rankAccuracy = review.rankAccuracy || 0;
@@ -51,10 +52,9 @@ module.exports.listingReviews = {
       const rankLocation = review.rankLocation || 0;
       const rankCheckin = review.rankCheckin || 0;
       const rankValue = review.rankValue || 0;
-      const inserts = [listingId, userId, reviewDate, reviewText, rankAccuracy, rankCommunication, rankCleanliness, rankLocation, rankCheckin, rankValue];
-      sql = mysql.format(sql, inserts);
+      const inserts = [listingId, userId, firstName, reviewDate, reviewText, rankAccuracy, rankCommunication, rankCleanliness, rankLocation, rankCheckin, rankValue];
 
-      db.dbConnection.query(sql, (err, result) => {
+      db.pgConnection.query(sql, inserts, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -67,7 +67,7 @@ module.exports.listingReviews = {
     return new Promise((resolve, reject) => {
       const sql = 'SELECT "UPDATE STATEMENT RAN";'; // Just putting in a dummy query in place of an update
 
-      db.dbConnection.query(sql, (err, result) => {
+      db.pgConnection.query(sql, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -78,12 +78,11 @@ module.exports.listingReviews = {
   },
   delete: (review) => {
     return new Promise((resolve, reject) => {
-      let sql = 'DELETE FROM tbl_review WHERE id = ??;';
+      const sql = 'DELETE FROM tbl_review WHERE id = $1;';
       const reviewId = review.reviewId || null;
       const inserts = [reviewId];
-      sql = mysql.format(sql, inserts);
 
-      db.dbConnection.query(sql, (err, result) => {
+      db.pgConnection.query(sql, inserts, (err, result) => {
         if (err) {
           reject(err);
         } else {
