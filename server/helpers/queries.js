@@ -8,11 +8,11 @@ module.exports.listingAverageStars = {
       // Using prepared statements to protect against SQL Injection Attacks
       // See here: https://dev.mysql.com/doc/refman/5.7/en/sql-syntax-prepared-statements.html
       // And here: https://github.com/mysqljs/mysql#preparing-queries
-      let sql = 'SELECT AVG(rank_accuracy) as rank_accuracy, AVG(rank_communication) as rank_communication, AVG(rank_cleanliness) as rank_cleanliness, AVG(rank_location) as rank_location, AVG(rank_checkin) as rank_checkin, AVG(rank_value) as rank_value FROM ?? WHERE ?? = ?';
-      const inserts = ['tbl_reviews', 'listing_id', listingId];
-      sql = mysql.format(sql, inserts);
-
-      db.dbConnection.query(sql, (err, result) => {
+      const sql = `SELECT AVG(rank_accuracy) as rank_accuracy, AVG(rank_communication) as rank_communication, 
+                 AVG(rank_cleanliness) as rank_cleanliness, AVG(rank_location) as rank_location, 
+                 AVG(rank_checkin) as rank_checkin, AVG(rank_value) as rank_value 
+                 FROM tbl_reviews WHERE listing_id = $1`;
+      db.pgConnection.query(sql, [listingId], (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -26,11 +26,10 @@ module.exports.listingAverageStars = {
 module.exports.listingReviews = {
   get: (listingId) => {
     return new Promise((resolve, reject) => {
-      let sql = 'SELECT tbl_reviews.review_date, tbl_reviews.review_text, tbl_users.first_name, tbl_users.last_name FROM ?? INNER JOIN ?? ON ?? = ?? WHERE ?? = ?';
-      const inserts = ['tbl_reviews', 'tbl_users', 'tbl_users.id', 'tbl_reviews.user_id', 'tbl_reviews.listing_id', listingId];
-      sql = mysql.format(sql, inserts);
-
-      db.dbConnection.query(sql, (err, result) => {
+      const sql = `SELECT r.review_date, r.review_text, r.first_name 
+                   FROM tbl_reviews as r 
+                  WHERE listing_id = $1`;
+      db.pgConnection.query(sql, [listingId], (err, result) => {
         if (err) {
           reject(err);
         } else {

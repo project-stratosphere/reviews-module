@@ -1,11 +1,11 @@
 const fs = require('fs');
 const faker = require('faker');
 
-const writeUsers = fs.createWriteStream('seed/users_test.csv', {
+const writeUsers = fs.createWriteStream('seed/users.csv', {
   flags: 'a',
 });
 
-const batch = 1000000;
+const batch = 100000;
 const batches = 1;
 // populate 10K different review comments
 const users = { first_name: [], last_name: [], user_name: [] };
