@@ -5,7 +5,7 @@ const writeUsers = fs.createWriteStream('seed/users.csv', {
   flags: 'a',
 });
 
-const batch = 100000;
+const batch = 10000;
 const batches = 1;
 // populate 10K different review comments
 const users = { first_name: [], last_name: [], user_name: [] };
