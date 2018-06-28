@@ -1,12 +1,13 @@
 const fs = require('fs');
 const faker = require('faker');
+const uuid = require('uuid/v4');
 
 const writeReviews = fs.createWriteStream('seed/reviewComments.csv', {
   flags: 'a',
 });
 
 const batch = 100000;
-const batches = 500;
+const batches = 1;
 // populate 10K different review comments
 const reviews = { dates: [], comments: [] };
 for (let i = 0; i < 10000; i += 1) {
@@ -79,7 +80,7 @@ for (let i = 0; i < batches; i += 1) {
     let checkin = Math.ceil(Math.random() * 5);
     let value = Math.ceil(Math.random() * 5);
 
-    data = data + listID + '|' + userID + '|' + firstName + '|' + date + '|' + text + '|' + accuracy + '|' + communication + '|' + cleanliness + '|' + location + '|' + checkin + '|' + value + '\n';
+    data = data + ID + '|' + listID + '|' + userID + '|' + firstName + '|' + date + '|' + text + '|' + accuracy + '|' + communication + '|' + cleanliness + '|' + location + '|' + checkin + '|' + value + '\n';
   }
 
   dataWriter(writeReviews, data, 'utf-8', (err) => {
