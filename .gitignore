@@ -9,6 +9,8 @@ node_modules/
 ## dummy data ##
 /database/seed
 cassandra/
+server-start
+newrelic.js
 
 pids
 *.pid
