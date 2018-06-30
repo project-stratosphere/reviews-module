@@ -1,5 +1,4 @@
 const db = require('../../database/index.js');
-const mysql = require('mysql');
 const Promise = require('bluebird');
 
 module.exports.listingAverageStars = {
@@ -8,11 +7,15 @@ module.exports.listingAverageStars = {
       // Using prepared statements to protect against SQL Injection Attacks
       // See here: https://dev.mysql.com/doc/refman/5.7/en/sql-syntax-prepared-statements.html
       // And here: https://github.com/mysqljs/mysql#preparing-queries
+      // const sql = `SELECT AVG(rank_accuracy) as rank_accuracy, AVG(rank_communication) as rank_communication, 
+      //            AVG(rank_cleanliness) as rank_cleanliness, AVG(rank_location) as rank_location, 
+      //            AVG(rank_checkin) as rank_checkin, AVG(rank_value) as rank_value 
+      //            FROM tbl_reviews WHERE listing_id = $1`;
       const sql = `SELECT AVG(rank_accuracy) as rank_accuracy, AVG(rank_communication) as rank_communication, 
-                 AVG(rank_cleanliness) as rank_cleanliness, AVG(rank_location) as rank_location, 
-                 AVG(rank_checkin) as rank_checkin, AVG(rank_value) as rank_value 
-                 FROM tbl_reviews WHERE listing_id = $1`;
-      db.pgConnection.query(sql, [listingId], (err, result) => {
+      AVG(rank_cleanliness) as rank_cleanliness, AVG(rank_location) as rank_location, 
+      AVG(rank_checkin) as rank_checkin, AVG(rank_value) as rank_value 
+      FROM tbl_reviews WHERE listing_id = ${listingId}`;
+      db.pgConnection.query(sql, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -26,10 +29,16 @@ module.exports.listingAverageStars = {
 module.exports.listingReviews = {
   get: (listingId) => {
     return new Promise((resolve, reject) => {
-      const sql = `SELECT r.review_date, r.review_text, r.first_name 
-                   FROM tbl_reviews as r 
-                  WHERE listing_id = $1`;
-      db.pgConnection.query(sql, [listingId], (err, result) => {
+      // const sql = {
+      //   name: 'fetch-reviews',
+      //   text: `SELECT r.review_date, r.review_text, r.first_name 
+      //         FROM tbl_reviews as r 
+      //         WHERE listing_id = $1`,
+      //   values: [listingId],
+      // };
+      let sql = `SELECT r.review_date, r.review_text, r.first_name 
+      FROM tbl_reviews as r WHERE listing_id = ${listingId}`
+      db.pgConnection.query(sql, (err, result) => {
         if (err) {
           reject(err);
         } else {
