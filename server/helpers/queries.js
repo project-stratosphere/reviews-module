@@ -36,7 +36,8 @@ module.exports.listingReviews = {
       //         WHERE listing_id = $1`,
       //   values: [listingId],
       // };
-      let sql = `SELECT r.review_date, r.review_text, r.first_name 
+      let sql = `SELECT r.review_date, r.review_text, r.first_name, 
+      r.rank_accuracy, r.rank_communication, r.rank_cleanliness, r.rank_location, r.rank_checkin, r.rank_value
       FROM mvw_reviews_50m as r WHERE listing_id = ${listingId}`
       db.pgConnection.query(sql, (err, result) => {
         if (err) {

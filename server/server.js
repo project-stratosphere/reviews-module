@@ -21,20 +21,6 @@ app.use('/rooms/:id', express.static(path.join(__dirname, '../client/dist')));
 // Decided not to use a router, considering there are only two routes.
 // Here's a helpful reference though for the future (note to self):
 // https://medium.com/@jeffandersen/building-a-node-js-rest-api-with-express-46b0901f29b6
-app.get('/api/listings/:id/averagestars', (req, res) => {
-  const listingId = req.params.id.replace(/\D/g, '');
-  const start = Date.now()
-  db.listingAverageStars.get(listingId)
-    .then(({ rows }) => {
-      const reviewStarsObj = dataHandlers.calcReviewsAverageStars(rows);
-      console.log('Promise resolved', Date.now() - start)
-      res.status(200).send(JSON.stringify(reviewStarsObj));
-    })
-    .catch((error) => {
-      res.status(500).send(JSON.stringify(error));
-    });
-});
-
 app.get('/api/listings/:id/reviews', (req, res) => {
   const listingId = req.params.id.replace(/\D/g, '');
   const start = Date.now()
