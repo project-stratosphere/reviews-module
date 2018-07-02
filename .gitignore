@@ -9,6 +9,15 @@ node_modules/
 ## dummy data ##
 /database/seed
 cassandra/
+server-start
+
+## test scripts ##
+__test__/generateTestListingIds.js
+__test__/listingIds.csv
+__test__/postgresqltuner.pl
+__test__/stress_test_config.yaml
+newrelic.js
+process.yml
 
 pids
 *.pid

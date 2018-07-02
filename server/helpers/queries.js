@@ -15,7 +15,6 @@ module.exports.listingAverageStars = {
       AVG(rank_cleanliness) as rank_cleanliness, AVG(rank_location) as rank_location, 
       AVG(rank_checkin) as rank_checkin, AVG(rank_value) as rank_value 
       FROM mvw_reviews_50m WHERE listing_id = ${listingId}`;
-      console.log('sql:', sql)
       db.pgConnection.query(sql, (err, result) => {
         if (err) {
           reject(err);

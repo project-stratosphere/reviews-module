@@ -12,13 +12,6 @@ const pgConnection = new Pool({
 });
 //max: 50,
 
-// pgConnection.connect((err) => {
-//   if (err) {
-//     throw err;
-//   }
-//   console.log('PostgreSQL connected');
-// });
-
 module.exports = {
   pgConnection,
 };

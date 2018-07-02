@@ -243,7 +243,7 @@ CREATE TABLE prt_reviews_m51 PARTITION OF master_reviews
 DROP TABLE IF EXISTS prt_reviews_m52;
 CREATE TABLE prt_reviews_m52 PARTITION OF master_reviews
   FOR VALUES FROM (51000000) TO (52000000);
-
+  
 DROP TABLE IF EXISTS prt_reviews_m53;
 CREATE TABLE prt_reviews_m53 PARTITION OF master_reviews
   FOR VALUES FROM (52000000) TO (53000000);
@@ -275,7 +275,6 @@ CREATE TABLE prt_reviews_m59 PARTITION OF master_reviews
  DROP TABLE IF EXISTS prt_reviews_m60;
 CREATE TABLE prt_reviews_m60 PARTITION OF master_reviews
   FOR VALUES FROM (59000000) TO (60000000);  
-  
   
 /**********************************
 *        seed the table
@@ -647,7 +646,7 @@ CREATE INDEX idx_prt_reviews_m9_covering_review
     ON prt_reviews_m9 USING btree
 	(listing_id, first_name, review_date, review_text)
 	TABLESPACE pg_default;
-	
+
 CREATE INDEX idx_prt_reviews_m10_covering_review
     ON prt_reviews_m10 USING btree
 	(listing_id, first_name, review_date, review_text)
