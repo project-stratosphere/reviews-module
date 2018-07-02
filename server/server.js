@@ -23,9 +23,11 @@ app.use('/rooms/:id', express.static(path.join(__dirname, '../client/dist')));
 // https://medium.com/@jeffandersen/building-a-node-js-rest-api-with-express-46b0901f29b6
 app.get('/api/listings/:id/averagestars', (req, res) => {
   const listingId = req.params.id.replace(/\D/g, '');
+  const start = Date.now()
   db.listingAverageStars.get(listingId)
     .then(({ rows }) => {
       const reviewStarsObj = dataHandlers.calcReviewsAverageStars(rows);
+      console.log('Promise resolved', Date.now() - start)
       res.status(200).send(JSON.stringify(reviewStarsObj));
     })
     .catch((error) => {
@@ -35,9 +37,11 @@ app.get('/api/listings/:id/averagestars', (req, res) => {
 
 app.get('/api/listings/:id/reviews', (req, res) => {
   const listingId = req.params.id.replace(/\D/g, '');
+  const start = Date.now()
   db.listingReviews.get(listingId)
     .then(({ rows }) => {
       const formattedReviews = dataHandlers.processReviewsArray(rows);
+      console.log('Promise resolved', Date.now() - start)
       res.status(200).send(JSON.stringify(formattedReviews));
     })
     .catch((error) => {

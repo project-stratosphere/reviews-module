@@ -14,7 +14,8 @@ module.exports.listingAverageStars = {
       const sql = `SELECT AVG(rank_accuracy) as rank_accuracy, AVG(rank_communication) as rank_communication, 
       AVG(rank_cleanliness) as rank_cleanliness, AVG(rank_location) as rank_location, 
       AVG(rank_checkin) as rank_checkin, AVG(rank_value) as rank_value 
-      FROM tbl_reviews WHERE listing_id = ${listingId}`;
+      FROM mvw_reviews_50m WHERE listing_id = ${listingId}`;
+      console.log('sql:', sql)
       db.pgConnection.query(sql, (err, result) => {
         if (err) {
           reject(err);
@@ -37,7 +38,7 @@ module.exports.listingReviews = {
       //   values: [listingId],
       // };
       let sql = `SELECT r.review_date, r.review_text, r.first_name 
-      FROM tbl_reviews as r WHERE listing_id = ${listingId}`
+      FROM mvw_reviews_50m as r WHERE listing_id = ${listingId}`
       db.pgConnection.query(sql, (err, result) => {
         if (err) {
           reject(err);
@@ -49,7 +50,7 @@ module.exports.listingReviews = {
   },
   post: (review) => {
     return new Promise((resolve, reject) => {
-      const sql = 'INSERT INTO tbl_reviews (listing_id, user_id, first_name, review_date, review_text, rank_accuracy, rank_communication, rank_cleanliness, rank_location, rank_checkin, rank_value) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)';
+      const sql = 'INSERT INTO master_reviews (listing_id, user_id, first_name, review_date, review_text, rank_accuracy, rank_communication, rank_cleanliness, rank_location, rank_checkin, rank_value) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)';
       const listingId = review.listingId;
       const userId = review.userId;
       const firstName = review.firstName || 'Anonymous';
@@ -87,7 +88,7 @@ module.exports.listingReviews = {
   },
   delete: (review) => {
     return new Promise((resolve, reject) => {
-      const sql = 'DELETE FROM tbl_review WHERE id = $1;';
+      const sql = 'DELETE FROM master_reviews WHERE id = $1;';
       const reviewId = review.reviewId || null;
       const inserts = [reviewId];
 

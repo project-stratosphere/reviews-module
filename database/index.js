@@ -8,8 +8,9 @@ const pgConnection = new Pool({
   database: 'dev_airbnb_sdc',
   password: 'devadmin',
   port: 5432,
-  max: 50,
+  max: 100,
 });
+//max: 50,
 
 // pgConnection.connect((err) => {
 //   if (err) {
