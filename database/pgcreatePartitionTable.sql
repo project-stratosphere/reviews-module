@@ -243,7 +243,7 @@ CREATE TABLE prt_reviews_m51 PARTITION OF master_reviews
 DROP TABLE IF EXISTS prt_reviews_m52;
 CREATE TABLE prt_reviews_m52 PARTITION OF master_reviews
   FOR VALUES FROM (51000000) TO (52000000);
-
+  
 DROP TABLE IF EXISTS prt_reviews_m53;
 CREATE TABLE prt_reviews_m53 PARTITION OF master_reviews
   FOR VALUES FROM (52000000) TO (53000000);
@@ -275,7 +275,6 @@ CREATE TABLE prt_reviews_m59 PARTITION OF master_reviews
  DROP TABLE IF EXISTS prt_reviews_m60;
 CREATE TABLE prt_reviews_m60 PARTITION OF master_reviews
   FOR VALUES FROM (59000000) TO (60000000);  
-  
   
 /**********************************
 *        seed the table
@@ -601,34 +600,327 @@ CREATE INDEX idx_prt_reviews_m60_listing_id
     TABLESPACE pg_default;
 	
 /**************************
-*  covering index 
+*  first 10 covering index 
 **************************/
+CREATE INDEX idx_prt_reviews_m1_covering_review
+    ON prt_reviews_m1 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m2_covering_review
+    ON prt_reviews_m2 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m3_covering_review
+    ON prt_reviews_m3 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m4_covering_review
+    ON prt_reviews_m4 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m5_covering_review
+    ON prt_reviews_m5 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+
+CREATE INDEX idx_prt_reviews_m6_covering_review
+    ON prt_reviews_m6 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m7_covering_review
+    ON prt_reviews_m7 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m8_covering_review
+    ON prt_reviews_m8 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m9_covering_review
+    ON prt_reviews_m9 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+
 CREATE INDEX idx_prt_reviews_m10_covering_review
     ON prt_reviews_m10 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+	
+	
+/**************************
+*  second 10 covering index 
+**************************/
+CREATE INDEX idx_prt_reviews_m11_covering_review
+    ON prt_reviews_m11 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m12_covering_review
+    ON prt_reviews_m12 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m13_covering_review
+    ON prt_reviews_m13 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m14_covering_review
+    ON prt_reviews_m14 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m15_covering_review
+    ON prt_reviews_m15 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+
+CREATE INDEX idx_prt_reviews_m16_covering_review
+    ON prt_reviews_m16 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m17_covering_review
+    ON prt_reviews_m17 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m18_covering_review
+    ON prt_reviews_m18 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m19_covering_review
+    ON prt_reviews_m19 USING btree
 	(listing_id, first_name, review_date, review_text)
 	TABLESPACE pg_default;
 	
 CREATE INDEX idx_prt_reviews_m20_covering_review
     ON prt_reviews_m20 USING btree
 	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;	
+	
+	
+/**************************
+*  third 10 covering index 
+**************************/
+CREATE INDEX idx_prt_reviews_m21_covering_review
+    ON prt_reviews_m21 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m22_covering_review
+    ON prt_reviews_m22 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m23_covering_review
+    ON prt_reviews_m23 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m24_covering_review
+    ON prt_reviews_m24 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m25_covering_review
+    ON prt_reviews_m25 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+
+CREATE INDEX idx_prt_reviews_m26_covering_review
+    ON prt_reviews_m26 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m27_covering_review
+    ON prt_reviews_m27 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m28_covering_review
+    ON prt_reviews_m28 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m29_covering_review
+    ON prt_reviews_m29 USING btree
+	(listing_id, first_name, review_date, review_text)
 	TABLESPACE pg_default;
 	
 CREATE INDEX idx_prt_reviews_m30_covering_review
     ON prt_reviews_m30 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;		
+	
+/**************************
+*  fourth 10 covering index 
+**************************/
+CREATE INDEX idx_prt_reviews_m31_covering_review
+    ON prt_reviews_m31 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m32_covering_review
+    ON prt_reviews_m32 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m33_covering_review
+    ON prt_reviews_m33 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m34_covering_review
+    ON prt_reviews_m34 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m35_covering_review
+    ON prt_reviews_m35 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+
+CREATE INDEX idx_prt_reviews_m36_covering_review
+    ON prt_reviews_m36 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m37_covering_review
+    ON prt_reviews_m37 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m38_covering_review
+    ON prt_reviews_m38 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m39_covering_review
+    ON prt_reviews_m39 USING btree
 	(listing_id, first_name, review_date, review_text)
 	TABLESPACE pg_default;
 	
 CREATE INDEX idx_prt_reviews_m40_covering_review
     ON prt_reviews_m40 USING btree
 	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;	
+	
+/**************************
+*  fifth 10 covering index 
+**************************/
+CREATE INDEX idx_prt_reviews_m41_covering_review
+    ON prt_reviews_m41 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m42_covering_review
+    ON prt_reviews_m42 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m43_covering_review
+    ON prt_reviews_m43 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m44_covering_review
+    ON prt_reviews_m44 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m45_covering_review
+    ON prt_reviews_m45 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+
+CREATE INDEX idx_prt_reviews_m46_covering_review
+    ON prt_reviews_m46 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m47_covering_review
+    ON prt_reviews_m47 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m48_covering_review
+    ON prt_reviews_m48 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m49_covering_review
+    ON prt_reviews_m49 USING btree
+	(listing_id, first_name, review_date, review_text)
 	TABLESPACE pg_default;
 	
 CREATE INDEX idx_prt_reviews_m50_covering_review
     ON prt_reviews_m50 USING btree
 	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;	
+		
+/**************************
+*  sixth 10 covering index 
+**************************/
+CREATE INDEX idx_prt_reviews_m51_covering_review
+    ON prt_reviews_m51 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m52_covering_review
+    ON prt_reviews_m52 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m53_covering_review
+    ON prt_reviews_m53 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m54_covering_review
+    ON prt_reviews_m54 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m55_covering_review
+    ON prt_reviews_m55 USING btree
+	(listing_id, first_name, review_date, review_text)
 	TABLESPACE pg_default;
 
+CREATE INDEX idx_prt_reviews_m56_covering_review
+    ON prt_reviews_m56 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m57_covering_review
+    ON prt_reviews_m57 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m58_covering_review
+    ON prt_reviews_m58 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
+CREATE INDEX idx_prt_reviews_m59_covering_review
+    ON prt_reviews_m59 USING btree
+	(listing_id, first_name, review_date, review_text)
+	TABLESPACE pg_default;
+	
 CREATE INDEX idx_prt_reviews_m60_covering_review
     ON prt_reviews_m60 USING btree
 	(listing_id, first_name, review_date, review_text)
-	TABLESPACE pg_default;
+	TABLESPACE pg_default;	
+	
+	
+	
+	
+	

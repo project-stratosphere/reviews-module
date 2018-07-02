@@ -20,7 +20,8 @@ class App extends React.Component {
     this.getListingId = this.getListingId.bind(this);
 
     // API calls
-    this.getListingAverageStars = this.getListingAverageStars.bind(this);
+    //this.getListingAverageStars = this.getListingAverageStars.bind(this);
+    this.getListingAverageStarsNew = this.getListingAverageStarsNew.bind(this);
     this.getListingReviews = this.getListingReviews.bind(this);
 
     // Methods
@@ -39,7 +40,7 @@ class App extends React.Component {
   componentDidMount() {
     const id = this.getListingId();
     this.getListingReviews(id);
-    this.getListingAverageStars(id);
+    //this.getListingAverageStars(id);
   }
 
   getListingId() {
@@ -60,10 +61,42 @@ class App extends React.Component {
       });
   }
 
+  getListingAverageStarsNew(data){
+    const avgStars = {
+      rAccuracy: 0,
+      rComms: 0,
+      rClean: 0,
+      rLocation: 0,
+      rCheckIn: 0,
+      rValue: 0,
+    };
+
+    if(data.length > 0) {
+      for (j = 0; j < data.length;j += 1) {
+        // sum up all the results from the reviews
+        avgStars.rAccuracy += data[j].rank_accuracy;
+        avgStars.rComms += data[j].rank_communications;
+        avgStars.rClean += data[j].rank_cleanliness;
+        avgStars.rLocation += data[j].rank_location;
+        avgStars.rCheckIn += data[j].rank_checkin;
+        avgStars.rValue += data[j].rank_value;
+      }
+      let denominator = data.length;
+      avgStars.rAccuracy = (avgStars.rAccuracy/denominator).toFixed(2);
+      avgStars.rComms = (avgStars.rComms/denominator).toFixed(2);
+      avgStars.rClean = (avgStars.rClean/denominator).toFixed(2);
+      avgStars.rLocation = (avgStars.rLocation/denominator).toFixed(2);
+      avgStars.rCheckIn = (avgStars.rCheckIn/denominator).toFixed(2);
+      avgStars.rValue = (avgStars.rValue/denominator).toFixed(2);
+    }
+    return avgStars;
+  }
+
   getListingReviews(id) {
     axios.get(`/api/listings/${id}/reviews`)
       .then((response) => {
         const { data } = response;
+        const avgStars = getListingAverageStarsNew(data)
         this.setState({
           allReviews: data,
           renderedReviews: data,

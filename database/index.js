@@ -8,14 +8,9 @@ const pgConnection = new Pool({
   database: 'dev_airbnb_sdc',
   password: 'devadmin',
   port: 5432,
+  max: 100,
 });
-
-pgConnection.connect((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log('PostgreSQL connected');
-});
+//max: 50,
 
 module.exports = {
   pgConnection,

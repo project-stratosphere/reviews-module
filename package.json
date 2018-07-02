@@ -11,7 +11,7 @@
     "deploy": "npm run load-data && npm run build & npm run start",
     "build": "webpack",
     "build-dev": "webpack --mode development --watch",
-    "start": "node server/server.js",
+    "start": "node --mode poduction server/server.js",
     "start-dev": "nodemon server/server.js",
     "load-data": "mysql -u root --local-infile < database/schema.sql",
     "test": "jest"
@@ -37,9 +37,10 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-star-ratings": "^2.2.0",
+    "redis": "^2.8.0",
     "style-loader": "^0.21.0",
     "styled-components": "^3.3.2",
-    "webpack": "^4.10.2",
+    "webpack": "^4.14.0",
     "webpack-cli": "^2.1.5",
     "webpack-dev-server": "^3.1.4"
   },

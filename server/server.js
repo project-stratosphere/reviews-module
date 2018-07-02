@@ -3,7 +3,8 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
-const query = require('./helpers/queries.js');
+//const query = require('./helpers/queries.js');
+const db = require('./helpers/queries.js');
 const dataHandlers = require('./helpers/datahandlers.js');
 
 const port = process.env.PORT || 3004;
@@ -22,9 +23,11 @@ app.use('/rooms/:id', express.static(path.join(__dirname, '../client/dist')));
 // https://medium.com/@jeffandersen/building-a-node-js-rest-api-with-express-46b0901f29b6
 app.get('/api/listings/:id/averagestars', (req, res) => {
   const listingId = req.params.id.replace(/\D/g, '');
-  query.listingAverageStars.get(listingId)
+  const start = Date.now()
+  db.listingAverageStars.get(listingId)
     .then(({ rows }) => {
       const reviewStarsObj = dataHandlers.calcReviewsAverageStars(rows);
+      console.log('Promise resolved', Date.now() - start)
       res.status(200).send(JSON.stringify(reviewStarsObj));
     })
     .catch((error) => {
@@ -34,9 +37,11 @@ app.get('/api/listings/:id/averagestars', (req, res) => {
 
 app.get('/api/listings/:id/reviews', (req, res) => {
   const listingId = req.params.id.replace(/\D/g, '');
-  query.listingReviews.get(listingId)
+  const start = Date.now()
+  db.listingReviews.get(listingId)
     .then(({ rows }) => {
       const formattedReviews = dataHandlers.processReviewsArray(rows);
+      console.log('Promise resolved', Date.now() - start)
       res.status(200).send(JSON.stringify(formattedReviews));
     })
     .catch((error) => {
@@ -46,7 +51,7 @@ app.get('/api/listings/:id/reviews', (req, res) => {
 
 app.post('/api/listings/:id/reviews/new', (req, res) => {
   const review = req.data; // Listing data (IDs) will have to be part of the data
-  query.listingReviews.post(review)
+  db.listingReviews.post(review)
     .then(({ rows }) => {
       const formattedReviews = dataHandlers.processReviewsArray(rows);
       res.status(200).send(JSON.stringify(formattedReviews));
@@ -58,7 +63,7 @@ app.post('/api/listings/:id/reviews/new', (req, res) => {
 
 app.put('/api/listings/:id/reviews/edit', (req, res) => {
   const review = req.data;
-  query.listingReviews.put(review)
+  db.listingReviews.put(review)
     .then(({ rows }) => {
       const formattedReviews = dataHandlers.processReviewsArray(rows);
       res.status(200).send(JSON.stringify(formattedReviews));
@@ -70,7 +75,7 @@ app.put('/api/listings/:id/reviews/edit', (req, res) => {
 
 app.delete('/api/listings/:id/reviews/remove', (req, res) => {
   const review = req.data;
-  query.listingReviews.delete(review)
+  db.listingReviews.delete(review)
     .then(({ rows }) => {
       const formattedReviews = dataHandlers.processReviewsArray(rows);
       res.status(200).send(JSON.stringify(formattedReviews));
