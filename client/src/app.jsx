@@ -100,6 +100,7 @@ class App extends React.Component {
         this.setState({
           allReviews: data,
           renderedReviews: data,
+          averageStarsObj: avgStars,
         });
       })
       .catch((error) => {
