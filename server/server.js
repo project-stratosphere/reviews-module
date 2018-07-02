@@ -2,38 +2,50 @@ require('newrelic');
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-
-//const query = require('./helpers/queries.js');
+const redis = require('redis');
+const compression = require('compression');
 const db = require('./helpers/queries.js');
 const dataHandlers = require('./helpers/datahandlers.js');
 
 const port = process.env.PORT || 3004;
 
 const app = express();
+const client = redis.createClient();
 
 // Allowing all cross origin requests for simplicity, given this is a controlled environment.
 // Would not do this in a deployment environment.
 app.use(cors());
-
 app.use('/rooms/:id', express.static(path.join(__dirname, '../public')));
 app.use('/rooms/:id', express.static(path.join(__dirname, '../client/dist')));
+app.use(compression());
 
 // Decided not to use a router, considering there are only two routes.
 // Here's a helpful reference though for the future (note to self):
 // https://medium.com/@jeffandersen/building-a-node-js-rest-api-with-express-46b0901f29b6
-app.get('/api/listings/:id/reviews', (req, res) => {
+const getCache = (req, res) => {
+  //console.log('there is a req', req)
+  const { params } = req;
   const listingId = req.params.id.replace(/\D/g, '');
-  const start = Date.now()
-  db.listingReviews.get(listingId)
+  // check cache first
+  client.get(listingId, (err, result) => {
+    if(result) {
+      res.status(200).send(result); //results already stringified
+      return;
+    }
+    db.listingReviews.get(listingId)
     .then(({ rows }) => {
       const formattedReviews = dataHandlers.processReviewsArray(rows);
-      console.log('Promise resolved', Date.now() - start)
+      // cache the results for 1 hour
+      client.setex(listingId, 3600, JSON.stringify(formattedReviews));
       res.status(200).send(JSON.stringify(formattedReviews));
     })
     .catch((error) => {
       res.status(500).send(JSON.stringify(error));
     });
-});
+  });
+}
+
+app.get('/api/listings/:id/reviews', getCache)
 
 app.post('/api/listings/:id/reviews/new', (req, res) => {
   const review = req.data; // Listing data (IDs) will have to be part of the data
